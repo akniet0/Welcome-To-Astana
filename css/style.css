@@ -1,0 +1,238 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.6;
+    color: #2c3e50;
+    background-color: #f4f7f6;
+}
+
+/* Headings */
+h1, h2, h3 {
+    color: #1a365d;
+    margin-bottom: 12px;
+}
+
+p {
+    margin-bottom: 16px;
+}
+
+ul, ol {
+    margin-left: 24px;
+    margin-bottom: 16px;
+}
+
+li {
+    margin-bottom: 6px;
+}
+
+/* Header */
+#main-header {
+    background-color: #005f73;
+    color: #ffffff;
+    padding: 30px 15px 0;
+    text-align: center;
+    border-bottom: 4px solid #0a9396;
+}
+
+#main-header h1 {
+    color: #ffffff;
+    font-size: 32px;
+}
+
+#main-header p {
+    color: #e0f2f1;
+    font-size: 16px;
+}
+
+.nav-menu {
+    background-color: #004654;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.nav-menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-menu li {
+    display: inline-block;
+}
+
+.nav-menu a {
+    display: block;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 14px 20px;
+    font-weight: bold;
+}
+
+.nav-menu a:hover,
+.nav-menu a.active {
+    background-color: #0a9396;
+    color: #ffffff;
+}
+
+/* Containers */
+.content-wrapper {
+    max-width: 960px;
+    margin: 30px auto;
+    padding: 0 15px;
+}
+
+.card {
+    background-color: #ffffff;
+    border: 1px solid #dcdde1;
+    padding: 24px;
+    margin-bottom: 24px;
+}
+
+/* Images */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+    border: 2px solid #005f73;
+}
+
+.hero-image {
+    width: 100%;
+    margin-bottom: 20px;
+    border-radius: 12px;
+}
+
+.table-tour-img {
+    width: 120px;
+    height: auto;
+    border-radius: 6px;
+}
+
+/* Tables  */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    background-color: #ffffff;
+}
+
+table th,
+table td {
+    padding: 12px;
+    text-align: left;
+    border: 1px solid #dcdde1;
+}
+
+table th {
+    background-color: #005f73;
+    color: #ffffff;
+}
+
+/* Forms */
+.form-group {
+    margin-bottom: 16px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 6px;
+}
+
+input[type="text"],
+input[type="email"],
+select,
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ced4da;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+}
+
+textarea {
+    min-height: 100px;
+}
+
+button {
+    background-color: #0a9396;
+    color: #ffffff;
+    border: none;
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+button:hover {
+    background-color: #005f73;
+}
+
+/* Background Images */
+.banner-section {
+    width: 100%;
+    padding: 60px 20px;
+    border-bottom: 3px solid #ffffff;
+    text-align: center;
+}
+
+.banner-history {
+    background-image: url('../images/astana-history.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+.banner-culture {
+    background-image: url('../images/astana-culture.jpeg');
+    background-size: cover;
+    background-position: center;
+}
+
+.banner-cuisine {
+    background-image: url('../images/astana-food.jpeg');
+    background-size: cover;
+    background-position: center;
+}
+
+.banner-content {
+    max-width: 850px;
+    margin: 0 auto;
+    background-color: rgba(0, 0, 0, 0.65);
+    padding: 30px;
+    color: #ffffff;
+}
+
+.banner-content h1,
+.banner-content h2 {
+    color: #ffffff;
+    font-size: 32px;
+    margin-bottom: 16px;
+}
+
+.banner-content p {
+    color: #f1f2f6;
+    margin-bottom: 14px;
+}
+
+.banner-content strong {
+    color: #ffd166;
+}
+
+/* Footer */
+footer {
+    background-color: #1a252f;
+    color: #bdc3c7;
+    text-align: center;
+    padding: 30px 15px;
+    margin-top: 40px;
+    font-size: 14px;
+}
+
+footer p {
+    margin-bottom: 6px;
+}

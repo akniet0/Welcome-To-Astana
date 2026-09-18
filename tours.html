@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visit Astana - Guided Tours</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <header id="main-header">
+        <div class="header-container">
+            <h1>Visit Astana</h1>
+            <p>Discover the modern heart and vibrant culture of Kazakhstan</p>
+        </div>
+        <nav class="nav-menu">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="history.html">History and Culture</a></li>
+                <li><a href="attractions.html">Attractions</a></li>
+                <li><a href="tours.html" class="active">Tours</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="content-wrapper">
+        <section class="card">
+            <h2>Available Tour Packages</h2>
+            <p>Explore Astana's futuristic skyline, historic avenues, and natural wonders. Review all tour details with preview photos in the table below.</p>
+        </section>
+
+        <section class="card">
+            <h3>Tour Directory & Schedules</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th scope="col">Preview</th>
+                        <th scope="col">Tour Package</th>
+                        <th scope="col">Duration</th>
+                        <th scope="col">Highlights</th>
+                        <th scope="col">Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <img src="images/Astana-Architecture.jpg" alt="Astana Architecture" class="table-tour-img">
+                        </td>
+                        <td><strong>Astana Architecture</strong></td>
+                        <td>4 Hours</td>
+                        <td>Baiterek Tower, Khan Shatyr, Palace of Peace</td>
+                        <td>12,000 KZT</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <img src="images/tour-night.jpg" alt="Astana by Night" class="table-tour-img">
+                        </td>
+                        <td><strong>Astana by Night</strong></td>
+                        <td>2.5 Hours</td>
+                        <td>Illuminated bridges, riverfront, EXPO sphere</td>
+                        <td>8,000 KZT</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <img src="images/tour-burabay.jpeg" alt="Burabay" class="table-tour-img">
+                        </td>
+                        <td><strong>Burabay Day Trip</strong></td>
+                        <td>9 Hours</td>
+                        <td>Lake Burabay, Okzhetpes Rock, hiking</td>
+                        <td>28,000 KZT</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="card">
+            <h3>Visitor Feedback & Questions</h3>
+            <p>Have a question about tours, or want to share a recent tour experience? Leave your comments below.</p>
+
+            <form id="contact-form" action="#" method="post">
+                <div class="form-group">
+                    <label for="visitor-name">Your Full Name:</label>
+                    <input type="text" id="visitor-name" name="visitor-name" placeholder="Name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="visitor-email">Your Email Address:</label>
+                    <input type="email" id="visitor-email" name="visitor-email" placeholder="name@example.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="tour-reference">Select Tour (Optional):</label>
+                    <select id="tour-reference" name="tour-reference">
+                        <option value="general">General Question</option>
+                        <option value="architecture">Architectural Marvels</option>
+                        <option value="night">Astana by Night</option>
+                        <option value="burabay">Burabay National Park</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="visitor-comment">Your Message or Review:</label>
+                    <textarea id="visitor-comment" name="visitor-comment" rows="4" placeholder="Write your question or feedback here..." required></textarea>
+                </div>
+
+                <div>
+                    <button type="submit">Submit Comment</button>
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>Project Team Members: Zhanserik Abilgali, Akniyet Zhanarbek</p>
+        <p>&copy; This page made by Zhanserik Abilgali</p>
+    </footer>
+
+</body>
+</html>
