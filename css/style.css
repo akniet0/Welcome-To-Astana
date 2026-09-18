@@ -188,13 +188,13 @@ button:hover {
 }
 
 .banner-culture {
-    background-image: url('../images/astana-culture.jpeg');
+    background-image: url('../images/astana-culture.jpg');
     background-size: cover;
     background-position: center;
 }
 
 .banner-cuisine {
-    background-image: url('../images/astana-food.jpeg');
+    background-image: url('../images/astana-food.jpg');
     background-size: cover;
     background-position: center;
 }
