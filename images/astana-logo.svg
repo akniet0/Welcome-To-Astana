@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="100%" height="100%">
+  <defs>
+    <!-- Warm Background Gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2a4d3e" />
+      <stop offset="100%" stop-color="#152b22" />
+    </linearGradient>
+
+    <!-- Warm Golden Sun & Orb Gradient -->
+    <linearGradient id="sunGrad" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#d67138" />
+      <stop offset="60%" stop-color="#f5a647" />
+      <stop offset="100%" stop-color="#fed678" />
+    </linearGradient>
+
+    <!-- Steppe Hills Gradient -->
+    <linearGradient id="hillGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3c6b57" />
+      <stop offset="100%" stop-color="#224234" />
+    </linearGradient>
+
+    <radialGradient id="glowGrad" cx="50%" cy="38%" r="45%">
+      <stop offset="0%" stop-color="#fed678" stop-opacity="0.45" />
+      <stop offset="100%" stop-color="#fed678" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+
+  <!-- Circular Outer Badge with Warm Terracotta Border -->
+  <circle cx="100" cy="100" r="95" fill="url(#bgGrad)" stroke="#d67138" stroke-width="4.5" />
+  <circle cx="100" cy="100" r="90" fill="none" stroke="#fed678" stroke-width="1.2" stroke-opacity="0.6" stroke-dasharray="3,3" />
+
+  <!-- Soft Steppe Sunrise Glow -->
+  <circle cx="100" cy="76" r="52" fill="url(#glowGrad)" />
+
+  <!-- Steppe Landscape Layers -->
+  <path d="M 8 135 Q 55 108 100 126 T 192 135 L 192 192 L 8 192 Z" fill="url(#hillGrad)" opacity="0.6" />
+  <path d="M 8 148 Q 65 128 115 142 T 192 144 L 192 192 L 8 192 Z" fill="#1b362a" />
+
+  <!-- Golden Samruk Egg (Baiterek Top Sphere) -->
+  <circle cx="100" cy="66" r="17" fill="url(#sunGrad)" filter="drop-shadow(0 2px 6px rgba(214, 113, 56, 0.5))" />
+
+  <!-- Stylized Baiterek Tower Silhouette -->
+  <!-- Left Spire Branch -->
+  <path d="M 94 158 L 94 92 C 94 80 82 72 74 65 C 80 77 88 88 88 98 L 88 158 Z" fill="#fbf7f0" />
+  <!-- Right Spire Branch -->
+  <path d="M 106 158 L 106 92 C 106 80 118 72 126 65 C 120 77 112 88 112 98 L 112 158 Z" fill="#fbf7f0" />
+  <!-- Center Stem -->
+  <path d="M 97 158 L 97 88 C 97 84 98 83 100 83 C 102 83 103 84 103 88 L 103 158 Z" fill="#fbf7f0" opacity="0.9" />
+
+  <!-- Traditional Kazakh Steppe Sun Rays (Gentle Crown) -->
+  <g stroke="#f5a647" stroke-width="2.5" stroke-linecap="round" opacity="0.85">
+    <line x1="100" y1="36" x2="100" y2="43" />
+    <line x1="78" y1="42" x2="82" y2="48" />
+    <line x1="122" y1="42" x2="118" y2="48" />
+    <line x1="62" y1="56" x2="68" y2="60" />
+    <line x1="138" y1="56" x2="132" y2="60" />
+  </g>
+
+  <!-- Base Accent Banner Plaque -->
+  <path d="M 68 174 Q 100 166 132 174" fill="none" stroke="#d67138" stroke-width="2.5" stroke-linecap="round" />
+</svg>

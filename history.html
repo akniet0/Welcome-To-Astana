@@ -8,53 +8,131 @@
 </head>
 <body>
 
-    <header id="main-header">
-        <div class="header-container">
-            <h1>Visit Astana</h1>
-            <p>Discover the modern heart and vibrant culture of Kazakhstan</p>
-        </div>
-        <nav class="nav-menu">
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="history.html" class="active">History and Culture</a></li>
-                <li><a href="attractions.html">Attractions</a></li>
-                <li><a href="tours.html">Tours</a></li>
-            </ul>
-        </nav>
-    </header>
+    <div class="site-container">
 
-    <section class="banner-section banner-history">
-        <div class="banner-content">
-            <h1>History of the city</h1>
-            <p>The history of Astana begins in 1830 with the construction of the Akmola fortress on the Ishim River. A city grew around it, becoming an important trade and economic center of the region.</p>
-            <p>In 1879, a railway connecting Tyumen and Akmolinsk was proposed. On July 6, 1994, the decision was made to move the capital from Almaty to Akmola, and the official transfer took place on December 10, 1997.</p>
-            <p>On May 6, 1998, Akmola was renamed Astana, and in 1999 it was awarded the title of a "city of peace" by UNESCO. Since 2000, the city has been a member of the International Assembly of Capitals and Large Cities.</p>
+        <!-- Task 1: Flexbox Navigation -->
+       <header id="main-header">
+    <nav class="navbar">
+        <div class="logo">
+            <!-- Round logo badge with border -->
+            <img src="images/astana-logo.svg" alt="Visit Astana Logo" class="logo-badge">
+            <div class="logo-text">
+                <h1>Visit Astana</h1>
+                <p>Heart of the Great Steppe</p>
+            </div>
         </div>
-    </section>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="history.html">History & Culture</a></li>
+            <li><a href="attractions.html">Attractions</a></li>
+            <li><a href="tours.html">Tours</a></li>
+        </ul>
+    </nav>
+</header>
 
-    <section class="banner-section banner-culture">
-        <div class="banner-content">
-            <h2>Nomadic Roots & Traditions</h2>
-            <p><strong>Hospitality (Qonaqjaylyq):</strong> Welcoming every guest with an open heart, fresh tea, and warm shelter is one of the most sacred principles of nomadic culture.</p>
-            <p><strong>The Sacred Dombra:</strong> The two-stringed wooden lute holds the soul of Kazakh oral literature, narrating historic legends, battles, and poetic kyis across generations.</p>
-            <p><strong>The Yurt (Kiiz Üy):</strong> A mobile felt sanctuary harmonizing family life with the natural seasons of the steppe, symbolizing unity, peace, and balance with the cosmos.</p>
-            <p><strong>Nauryz Meiramy:</strong> The ancient celebration of spring renewal and new beginnings, bringing communities together for games, performances, and communal feasts.</p>
+        <!-- Task 3: Grid Sidebar -->
+        <aside class="site-sidebar">
+            <div class="sidebar-widget">
+                <h4>Cultural Highlights</h4>
+                <ul>
+                    <li><strong>Nomadic Spirit:</strong> Open hospitality & freedom</li>
+                    <li><strong>National Symbol:</strong> Baiterek & Golden Samruk</li>
+                    <li><strong>Spring Feast:</strong> Nauryz celebrations</li>
+                    <li><strong>Music:</strong> Expressive Dombra kyis</li>
+                </ul>
+            </div>
+
+            <div class="sidebar-widget">
+                <h4>Top Cultural Spot</h4>
+                <p style="font-size: 13px;">Visit the National Museum of the Republic of Kazakhstan on Tauelsizdik Ave for ancient nomad gold relics.</p>
+            </div>
+        </aside>
+
+        <!-- Task 3: Grid Main Content -->
+        <main class="content-wrapper">
+            
+            <section class="content-card">
+                <h2>The Story of the Capital</h2>
+                <p>From an 1830 steppe outpost to an internationally recognized center of peace and futuristic architecture, explore how Astana evolved over two centuries.</p>
+
+                <div class="timeline-card">
+                    <span class="timeline-year">1830</span>
+                    <h3>Akmola Fortress</h3>
+                    <p>Established on the picturesque banks of the Ishim River, growing rapidly into a lively trading crossroads along historic caravan routes.</p>
+                </div>
+
+                <div class="timeline-card">
+                    <span class="timeline-year">1997</span>
+                    <h3>Official Capital Relocation</h3>
+                    <p>The state capital was officially transferred from Almaty to Akmola on December 10, 1997, initiating one of modern history's boldest urban architectural projects.</p>
+                </div>
+
+                <div class="timeline-card">
+                    <span class="timeline-year">1999</span>
+                    <h3>UNESCO "City of Peace"</h3>
+                    <p>Awarded this honorable title in recognition of its peaceful inter-ethnic harmony, cultural dialogue, and rapid international diplomatic role.</p>
+                </div>
+            </section>
+
+            <section class="content-card">
+                <h2>Nomadic Roots & Traditions</h2>
+                <p>The spirit of hospitality and connection with nature remains the foundation of Kazakh life:</p>
+
+                <div class="traditions-grid">
+                    <div class="tradition-item">
+                        <h4>Qonaqjaylyq (Hospitality)</h4>
+                        <p>Welcoming travelers with hot tea, fresh baursaks, and the best place at the table is a sacred nomadic tradition.</p>
+                    </div>
+                    <div class="tradition-item">
+                        <h4>Sacred Dombra</h4>
+                        <p>The two-stringed wooden lute holds the soul of the steppe, carrying tales, heroic epics, and ancestral melodies.</p>
+                    </div>
+                    <div class="tradition-item">
+                        <h4>Kiiz Üy (The Yurt)</h4>
+                        <p>An elegant dome home harmonizing family life with the seasons, representing family unity and balance with the earth.</p>
+                    </div>
+                    <div class="tradition-item">
+                        <h4>Nauryz Meiramy</h4>
+                        <p>The ancient vernal equinox celebrating renewal, friendship, traditional games, and shared community meals.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="content-card">
+    <h2>Flavors of the Steppe</h2>
+    <p>Hearty, comforting dishes made for family feasts and cold winters:</p>
+
+    <div class="food-showcase">
+        <div class="food-card">
+            <!-- Put your food photo here or reuse an existing image -->
+            <img src="images/besh.jpg" alt="Beshbarmak" class="food-img-badge">
+            <h4>Beshbarmak</h4>
+            <p>Tender cuts served over broad homemade pasta ribbons with savory onion broth.</p>
         </div>
-    </section>
 
-    <section class="banner-section banner-cuisine">
-        <div class="banner-content">
-            <h2>Traditional Flavors to Try</h2>
-            <p><strong>Beshbarmak:</strong> The iconic centerpiece of Kazakh feasts, featuring tender boiled cuts served over broad hand-rolled noodles and drenched in savory onion broth.</p>
-            <p><strong>Golden Baursaks:</strong> Puffy, golden spheres of dough fried to a tender crisp, served steaming hot at every festive table and family gathering.</p>
-            <p><strong>Steppe Qurt & Dairy:</strong> Sun-dried sour curd balls and refreshing dairy drinks like <em>qymyz</em> and <em>shubat</em> that carried nomads across journeys across the vast steppe.</p>
+        <div class="food-card">
+            <img src="images/baursak.jpg" alt="Baursaks" class="food-img-badge">
+            <h4>Baursaks</h4>
+            <p>Golden, airy fried dough spheres served steaming hot alongside milk tea.</p>
         </div>
-    </section>
 
-    <footer>
-        <p>Project Team Members: Zhanserik Abilgali, Akniyet Zhanarbek</p>
-        <p>&copy; This page made by Zhanserik Abilgali</p>
-    </footer>
+        <div class="food-card">
+            <img src="images/qymyz.jpg" alt="Qurt and Qymyz" class="food-img-badge">
+            <h4>Qurt & Qymyz</h4>
+            <p>Sun-dried tangy cheese curds and nourishing fermented drinks of the nomads.</p>
+        </div>
+    </div>
+</section>
+
+        </main>
+
+        <!-- Task 3: Grid Footer -->
+        <footer>
+            <p>Project Team Members: Zhanserik Abilgali, Akniyet Zhanarbek</p>
+            <p>&copy; This page made by Zhanserik Abilgali</p>
+        </footer>
+
+    </div>
 
 </body>
 </html>
