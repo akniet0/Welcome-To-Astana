@@ -8,57 +8,174 @@
 </head>
 <body>
 
-    <header id="main-header">
-        <div class="header-container">
-            <h1>Visit Astana</h1>
-            <p>Discover the modern heart and vibrant culture of Kazakhstan</p>
+    <!-- TASK 3: Grid Container wrapper with areas -->
+    <div class="site-container">
+
+        <!-- TASK 1: Flexbox Header Navigation -->
+        <header id="main-header">
+    <nav class="navbar">
+        <div class="logo">
+            <!-- Round logo badge with border -->
+            <img src="images/astana-logo.svg" alt="Visit Astana Logo" class="logo-badge">
+            <div class="logo-text">
+                <h1>Visit Astana</h1>
+                <p>Heart of the Great Steppe</p>
+            </div>
         </div>
-        <nav class="nav-menu">
-            <ul>
-                <li><a href="index.html" class="active">Home</a></li>
-                <li><a href="history.html">History and Culture</a></li>
-                <li><a href="attractions.html">Attractions</a></li>
-                <li><a href="tours.html">Tours</a></li>
-            </ul>
-        </nav>
-    </header>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="history.html">History & Culture</a></li>
+            <li><a href="attractions.html">Attractions</a></li>
+            <li><a href="tours.html">Tours</a></li>
+        </ul>
+    </nav>
+</header>
+        <!-- TASK 3: Grid Sidebar -->
+        <aside class="site-sidebar">
+            <div class="sidebar-widget">
+                <h4>Capital Quick Facts</h4>
+                <ul>
+                    <li><strong>Status:</strong> Capital since 1997</li>
+                    <li><strong>Currency:</strong> KZT (Tenge)</li>
+                    <li><strong>Time Zone:</strong> UTC+5</li>
+                    <li><strong>Weather:</strong> Sunny & crisp</li>
+                </ul>
+            </div>
+            <div class="sidebar-widget">
+                <h4>Tourist Info</h4>
+                <p style="font-size: 13px;">Free visitor maps & guides available at airport and railway kiosks.</p>
+            </div>
+        </aside>
 
-    <main class="content-wrapper">
-        <section class="card">
-            <img src="images/welcome_to_Astana.jpg" alt="Welcome to Astana" class="hero-image">
-            <h2>Welcome to Astana</h2>
-            <p>Astana is a unique blend of futuristic architecture, rich nomadic heritage, and warm hospitality. Located in central Kazakhstan, the city stands out with iconic landmarks designed by world-renowned architects, expansive public parks, and cultural centers.</p>
-        </section>
+        <!-- TASK 3: Grid Main Content -->
+        <main class="content-wrapper">
+            <section class="content-card">
+                <img src="images/welcome_to_Astana.jpg" alt="Welcome to Astana" class="hero-image">
+                <h2>Welcome to Astana</h2>
+                <p>Astana is a unique blend of futuristic architecture, rich nomadic heritage, and warm hospitality. Located in central Kazakhstan, the city stands out with iconic landmarks designed by world-renowned architects, expansive public parks, and vibrant cultural centers.</p>
+            </section>
 
-        <section class="card">
-            <h3>Why Visit Astana?</h3>
-            <p>Whether you are visiting for world-class architecture, traditional Kazakh cuisine, or lively festivals, Astana offers unforgettable experiences:</p>
-            <ul>
-                <li><strong>Iconic Architecture:</strong> Marvel at Baiterek Tower, Khan Shatyr, and the Nur-Alem sphere.</li>
-                <li><strong>Cultural Centers:</strong> Explore the National Museum of Kazakhstan and the Astana Opera.</li>
-                <li><strong>Green Spaces:</strong> Walk along the Ishim River embankment and Central Park.</li>
-            </ul>
-        </section>
+            <!-- TASK 2: Flexbox Card Row (3 Cards with Equal Heights & Hover) -->
+            <section>
+                <h2>Featured Highlights</h2>
+                <div class="card-row">
+                    <article class="flex-card">
+                        <img src="images/baiterek.jpg" alt="Baiterek Tower">
+                        <div class="card-body">
+                            <h3>Baiterek Tower</h3>
+                            <p>Ascend the iconic golden sphere for a bird's-eye view across the capital's main axis.</p>
+                            <a href="attractions.html" class="card-btn">Learn More</a>
+                        </div>
+                    </article>
 
-        <section class="card">
-            <h3>Quick Travel Tips</h3>
-            <ol>
-                <li>Best time to visit: Late spring through early autumn (May to September).</li>
-                <li>Currency: Kazakhstani Tenge (KZT). Card payments are widely accepted.</li>
-                <li>Getting around: Easy access via city buses, ride-hailing apps, and bicycle rentals.</li>
-            </ol>
-        </section>
+                    <article class="flex-card">
+                        <img src="images/khan-shatyr.jpg" alt="Khan Shatyr">
+                        <div class="card-body">
+                            <h3>Khan Shatyr</h3>
+                            <p>Discover the monumental tent offering shopping, tropical beaches, and entertainment.</p>
+                            <a href="attractions.html" class="card-btn">Learn More</a>
+                        </div>
+                    </article>
 
-        <section class="card">
-            <h3>Notes</h3>
-            <p>This tourism portal was created to help international guests, students, and travelers navigate the capital city smoothly and find guided experiences across all districts.</p>
-        </section>
-    </main>
+                    <article class="flex-card">
+                        <img src="images/hazret-sultan.jpg" alt="Hazret Sultan">
+                        <div class="card-body">
+                            <h3>Hazret Sultan</h3>
+                            <p>Marvel at pure white marble domes and traditional Kazakh decorative craftsmanship.</p>
+                            <a href="attractions.html" class="card-btn">Learn More</a>
+                        </div>
+                    </article>
+                </div>
+            </section>
 
-    <footer>
-        <p>Project Team Members: Zhanserik Abilgali, Akniyet Zhanarbek</p>
-        <p>&copy; This page made by Akniyet Zhanarbek</p>
-    </footer>
+            <!-- TASK 4: 9-Image Grid Gallery with Hover Captions -->
+            <section class="gallery-section">
+                <h2>Photo Gallery</h2>
+                <p>Explore Astana's landmarks and lively corners through the lens:</p>
+                <div class="image-gallery">
+                    <div class="gallery-item">
+                        <img src="images/baiterek.jpg" alt="Baiterek">
+                        <div class="gallery-caption">
+                            <h4>Baiterek</h4>
+                            <p>Symbol of modern Kazakhstan</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/khan-shatyr.jpg" alt="Khan Shatyr">
+                        <div class="gallery-caption">
+                            <h4>Khan Shatyr</h4>
+                            <p>World's largest tensile tent</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/hazret-sultan.jpg" alt="Hazret Sultan">
+                        <div class="gallery-caption">
+                            <h4>Hazret Sultan</h4>
+                            <p>Grand oriental mosque</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/nuralem.jpg" alt="Architecture">
+                        <div class="gallery-caption">
+                            <h4>Nur-Alem</h4>
+                            <p>The iconic EXPO sphere</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/tour-night.jpg" alt="Night View">
+                        <div class="gallery-caption">
+                            <h4>Astana at Night</h4>
+                            <p>Vibrant illuminated skyline</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/tour-burabay.jpg" alt="Burabay">
+                        <div class="gallery-caption">
+                            <h4>Burabay</h4>
+                            <p>Kazakhstan's natural gem</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/welcome_to_Astana.jpg" alt="City View">
+                        <div class="gallery-caption">
+                            <h4>City Center</h4>
+                            <p>Boulevards & open plazas</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/skyview.jpg" alt="Observation Deck">
+                        <div class="gallery-caption">
+                            <h4>Sky View</h4>
+                            <p>Panoramic capital vista</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/oasis.jpg" alt="Interiors">
+                        <div class="gallery-caption">
+                            <h4>Indoor Oasis</h4>
+                            <p>Year-round warmth</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="content-card">
+                <h3>Quick Travel Tips</h3>
+                <ol>
+                    <li>Best time to visit: Late spring through early autumn (May to September).</li>
+                    <li>Currency: Kazakhstani Tenge (KZT). Card payments are widely accepted.</li>
+                    <li>Getting around: Easy access via city buses and ride-hailing apps.</li>
+                </ol>
+            </section>
+        </main>
+
+        <!-- TASK 3: Grid Footer -->
+        <footer>
+            <p>Project Team Members: Zhanserik Abilgali, Akniyet Zhanarbek</p>
+            <p>&copy; This page made by Akniyet Zhanarbek</p>
+        </footer>
+
+    </div>
 
 </body>
 </html>
