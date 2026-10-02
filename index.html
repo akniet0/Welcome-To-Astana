@@ -4,175 +4,172 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Visit Astana - Home</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-    <div class="site-container">
-        <!-- Site Header -->
-        <header id="main-header">
-            <nav class="navbar">
-                <div class="logo">
+    <!-- Task 5: Bootstrap Navigation Bar -->
+    <header class="sticky-top">
+        <nav class="navbar navbar-expand-lg custom-navbar py-2 px-3 px-sm-4" aria-label="Main Navigation">
+            <div class="container-fluid">
+                <a class="navbar-brand d-flex align-items-center gap-2 text-white" href="index.html">
                     <img src="images/astana-logo.svg" alt="Visit Astana Logo" class="logo-badge">
-                    <div class="logo-text">
-                        <h1>Visit Astana</h1>
-                        <p>Heart of the Great Steppe</p>
+                    <div>
+                        <span class="h5 m-0 d-block text-white">Visit Astana</span>
+                        <small class="text-white-50">Heart of the Great Steppe</small>
                     </div>
+                </a>
+                <button class="navbar-toggler border-white text-white" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon" style="filter: invert(1);"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="mainNavbar">
+                    <ul class="navbar-nav gap-lg-2 mt-3 mt-lg-0">
+                        <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="history.html">History & Culture</a></li>
+                        <li class="nav-item"><a class="nav-link" href="attractions.html">Attractions</a></li>
+                        <li class="nav-item"><a class="nav-link" href="tours.html">Tours</a></li>
+                    </ul>
                 </div>
-                <ul class="nav-links">
-                    <li><a href="index.html" class="active">Home</a></li>
-                    <li><a href="history.html">History & Culture</a></li>
-                    <li><a href="attractions.html">Attractions</a></li>
-                    <li><a href="tours.html">Tours</a></li>
-                </ul>
-            </nav>
-        </header>
-
-        <!-- Sidebar -->
-        <aside class="site-sidebar">
-            <div class="sidebar-widget">
-                <h4>Capital Quick Facts</h4>
-                <ul>
-                    <li><strong>Status:</strong> Capital since 1997</li>
-                    <li><strong>Currency:</strong> KZT (Tenge)</li>
-                    <li><strong>Time Zone:</strong> UTC+5</li>
-                    <li><strong>Weather:</strong> Sunny & crisp</li>
-                </ul>
             </div>
-            <div class="sidebar-widget">
-                <h4>Tourist Info</h4>
-                <p>Free visitor maps & guides available at airport and railway kiosks.</p>
+        </nav>
+    </header>
+
+    <!-- Main Container -->
+    <main class="container my-4 my-lg-5 px-sm-2">
+
+        <!-- Welcome Banner (Edge-to-edge image, no empty side space) -->
+        <section class="p-4 p-md-4 mb-5 bg-white rounded-4 shadow-sm border">
+            <div class="mb-4">
+                <img src="images/welcome_to_Astana.jpg" alt="Welcome to Astana" class="hero-card-img shadow-sm">
             </div>
-        </aside>
+            <h1 class="display-6 fw-bold">Welcome to Astana</h1>
+            <p class="lead text-muted mb-3">Astana is a unique blend of futuristic architecture, rich nomadic heritage, and warm steppe hospitality.</p>
+            
+            <!-- Task 6: Button Group -->
+            <div class="btn-group mt-2" role="group" aria-label="Quick Navigation Links">
+                <a href="attractions.html" class="btn btn-primary btn-sm btn-md-lg">View Landmarks</a>
+                <a href="tours.html" class="btn btn-outline-secondary btn-sm btn-md-lg">Book a Tour</a>
+                <a href="history.html" class="btn btn-outline-secondary btn-sm btn-md-lg">Culture</a>
+            </div>
+        </section>
 
-        <!-- Main Content -->
-        <main class="content-wrapper">
-            <section class="content-card">
-                <img src="images/welcome_to_Astana.jpg" alt="Welcome to Astana" class="hero-image">
-                <h2>Welcome to Astana</h2>
-                <p>Astana is a unique blend of futuristic architecture, rich nomadic heritage, and warm hospitality. Located in central Kazakhstan, the city stands out with iconic landmarks designed by world-renowned architects, expansive public parks, and vibrant cultural centers.</p>
-            </section>
+        <!-- Task 7: Bootstrap Carousel (Full width, perfectly aligned with sections above & below) -->
+        <section class="mb-5">
+            <h2 class="section-heading">Astana Gallery in 9 Frames</h2>
+            <div class="carousel-box border">
+                <div id="astanaCarousel" class="carousel slide" data-bs-ride="carousel">
+                    <!-- Indicators -->
+                    <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#astanaCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                        <button type="button" data-bs-target="#astanaCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                        <button type="button" data-bs-target="#astanaCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                        <button type="button" data-bs-target="#astanaCarousel" data-bs-slide-to="3" aria-label="Slide 4"></button>
+                        <button type="button" data-bs-target="#astanaCarousel" data-bs-slide-to="4" aria-label="Slide 5"></button>
+                        <button type="button" data-bs-target="#astanaCarousel" data-bs-slide-to="5" aria-label="Slide 6"></button>
+                        <button type="button" data-bs-target="#astanaCarousel" data-bs-slide-to="6" aria-label="Slide 7"></button>
+                        <button type="button" data-bs-target="#astanaCarousel" data-bs-slide-to="7" aria-label="Slide 8"></button>
+                        <button type="button" data-bs-target="#astanaCarousel" data-bs-slide-to="8" aria-label="Slide 9"></button>
+                    </div>
 
-            <!-- Highlights -->
-            <section>
-                <h2>Featured Highlights</h2>
-                <div class="card-row">
-                    <article class="flex-card">
-                        <img src="images/baiterek.jpg" alt="Baiterek Tower">
-                        <div class="card-body">
-                            <h3>Baiterek Tower</h3>
-                            <p>Ascend the iconic golden sphere for a bird's-eye view across the capital's main axis.</p>
-                            <a href="attractions.html" class="card-btn">Learn More</a>
-                        </div>
-                    </article>
+                    <!-- 9 Slides -->
+                    <div class="carousel-inner">
+                        <div class="carousel-item active"><img src="images/baiterek.jpg" class="carousel-img" alt="Baiterek Tower"><div class="carousel-caption d-none d-md-block bg-dark bg-opacity-75 rounded p-2"><h5>1. Baiterek Tower</h5><p class="m-0">Symbol of modern Kazakhstan</p></div></div>
+                        <div class="carousel-item"><img src="images/khan-shatyr.jpg" class="carousel-img" alt="Khan Shatyr"><div class="carousel-caption d-none d-md-block bg-dark bg-opacity-75 rounded p-2"><h5>2. Khan Shatyr</h5><p class="m-0">World's largest tensile tent</p></div></div>
+                        <div class="carousel-item"><img src="images/hazret-sultan.jpg" class="carousel-img" alt="Hazret Sultan"><div class="carousel-caption d-none d-md-block bg-dark bg-opacity-75 rounded p-2"><h5>3. Hazret Sultan Mosque</h5><p class="m-0">Grand oriental marble mosque</p></div></div>
+                        <div class="carousel-item"><img src="images/nuralem.jpg" class="carousel-img" alt="Nur-Alem Sphere"><div class="carousel-caption d-none d-md-block bg-dark bg-opacity-75 rounded p-2"><h5>4. Nur-Alem</h5><p class="m-0">The iconic EXPO sphere</p></div></div>
+                        <div class="carousel-item"><img src="images/tour-night.jpg" class="carousel-img" alt="Astana Night"><div class="carousel-caption d-none d-md-block bg-dark bg-opacity-75 rounded p-2"><h5>5. Astana by Night</h5><p class="m-0">Lively illuminated skyline</p></div></div>
+                        <div class="carousel-item"><img src="images/tour-burabay.jpg" class="carousel-img" alt="Burabay"><div class="carousel-caption d-none d-md-block bg-dark bg-opacity-75 rounded p-2"><h5>6. Burabay Nature</h5><p class="m-0">Kazakhstan's natural forest resort</p></div></div>
+                        <div class="carousel-item"><img src="images/welcome_to_Astana.jpg" class="carousel-img" alt="City Center"><div class="carousel-caption d-none d-md-block bg-dark bg-opacity-75 rounded p-2"><h5>7. City Center</h5><p class="m-0">Nurzhol Boulevard and open plazas</p></div></div>
+                        <div class="carousel-item"><img src="images/skyview.jpg" class="carousel-img" alt="Sky View"><div class="carousel-caption d-none d-md-block bg-dark bg-opacity-75 rounded p-2"><h5>8. Observation Sky View</h5><p class="m-0">Panoramic city panorama</p></div></div>
+                        <div class="carousel-item"><img src="images/oasis.jpg" class="carousel-img" alt="Indoor Oasis"><div class="carousel-caption d-none d-md-block bg-dark bg-opacity-75 rounded p-2"><h5>9. Indoor Oasis</h5><p class="m-0">Year-round tropical gardens</p></div></div>
+                    </div>
 
-                    <article class="flex-card">
-                        <img src="images/khan-shatyr.jpg" alt="Khan Shatyr">
-                        <div class="card-body">
-                            <h3>Khan Shatyr</h3>
-                            <p>Discover the monumental tent offering shopping, tropical beaches, and entertainment.</p>
-                            <a href="attractions.html" class="card-btn">Learn More</a>
-                        </div>
-                    </article>
-
-                    <article class="flex-card">
-                        <img src="images/hazret-sultan.jpg" alt="Hazret Sultan">
-                        <div class="card-body">
-                            <h3>Hazret Sultan</h3>
-                            <p>Marvel at pure white marble domes and traditional Kazakh decorative craftsmanship.</p>
-                            <a href="attractions.html" class="card-btn">Learn More</a>
-                        </div>
-                    </article>
+                    <!-- Controls -->
+                    <button class="carousel-control-prev" type="button" data-bs-target="#astanaCarousel" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#astanaCarousel" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
                 </div>
-            </section>
+            </div>
+        </section>
 
-            <!-- Gallery -->
-            <section class="gallery-section">
-                <h2>Photo Gallery</h2>
-                <p>Explore Astana's landmarks and lively corners through the lens:</p>
-                <div class="image-gallery">
-                    <div class="gallery-item">
-                        <img src="images/baiterek.jpg" alt="Baiterek">
-                        <div class="gallery-caption">
-                            <h4>Baiterek</h4>
-                            <p>Symbol of modern Kazakhstan</p>
-                        </div>
-                    </div>
-                    <div class="gallery-item">
-                        <img src="images/khan-shatyr.jpg" alt="Khan Shatyr">
-                        <div class="gallery-caption">
-                            <h4>Khan Shatyr</h4>
-                            <p>World's largest tensile tent</p>
-                        </div>
-                    </div>
-                    <div class="gallery-item">
-                        <img src="images/hazret-sultan.jpg" alt="Hazret Sultan">
-                        <div class="gallery-caption">
-                            <h4>Hazret Sultan</h4>
-                            <p>Grand oriental mosque</p>
-                        </div>
-                    </div>
-                    <div class="gallery-item">
-                        <img src="images/nuralem.jpg" alt="Architecture">
-                        <div class="gallery-caption">
-                            <h4>Nur-Alem</h4>
-                            <p>The iconic EXPO sphere</p>
-                        </div>
-                    </div>
-                    <div class="gallery-item">
-                        <img src="images/tour-night.jpg" alt="Night View">
-                        <div class="gallery-caption">
-                            <h4>Astana at Night</h4>
-                            <p>Vibrant illuminated skyline</p>
-                        </div>
-                    </div>
-                    <div class="gallery-item">
-                        <img src="images/tour-burabay.jpg" alt="Burabay">
-                        <div class="gallery-caption">
-                            <h4>Burabay</h4>
-                            <p>Kazakhstan's natural gem</p>
-                        </div>
-                    </div>
-                    <div class="gallery-item">
-                        <img src="images/welcome_to_Astana.jpg" alt="City View">
-                        <div class="gallery-caption">
-                            <h4>City Center</h4>
-                            <p>Boulevards & open plazas</p>
-                        </div>
-                    </div>
-                    <div class="gallery-item">
-                        <img src="images/skyview.jpg" alt="Observation Deck">
-                        <div class="gallery-caption">
-                            <h4>Sky View</h4>
-                            <p>Panoramic capital vista</p>
-                        </div>
-                    </div>
-                    <div class="gallery-item">
-                        <img src="images/oasis.jpg" alt="Interiors">
-                        <div class="gallery-caption">
-                            <h4>Indoor Oasis</h4>
-                            <p>Year-round warmth</p>
+        <!-- Task 3 & 8: 3-column Bootstrap Cards (col-lg-4) -->
+        <section class="mb-5">
+            <h2 class="section-heading">Featured Highlights</h2>
+            <div class="row g-4">
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card h-100 cozy-card">
+                        <img src="images/baiterek.jpg" class="card-img-top" alt="Baiterek">
+                        <div class="card-body d-flex flex-column">
+                            <h3 class="card-title h5">Baiterek Tower</h3>
+                            <p class="card-text flex-grow-1">Ascend the iconic golden sphere for a bird's-eye view across the capital's central axis.</p>
+                            <a href="attractions.html" class="btn btn-outline-primary btn-sm align-self-start mt-2">Learn More</a>
                         </div>
                     </div>
                 </div>
-            </section>
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card h-100 cozy-card">
+                        <img src="images/khan-shatyr.jpg" class="card-img-top" alt="Khan Shatyr">
+                        <div class="card-body d-flex flex-column">
+                            <h3 class="card-title h5">Khan Shatyr</h3>
+                            <p class="card-text flex-grow-1">A monumental transparent tent featuring shopping, an indoor tropical beach, and entertainment.</p>
+                            <a href="attractions.html" class="btn btn-outline-primary btn-sm align-self-start mt-2">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card h-100 cozy-card">
+                        <img src="images/hazret-sultan.jpg" class="card-img-top" alt="Hazret Sultan">
+                        <div class="card-body d-flex flex-column">
+                            <h3 class="card-title h5">Hazret Sultan</h3>
+                            <p class="card-text flex-grow-1">Marvel at pure white marble domes and traditional Kazakh decorative craftsmanship.</p>
+                            <a href="attractions.html" class="btn btn-outline-primary btn-sm align-self-start mt-2">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-            <section class="content-card">
-                <h3>Quick Travel Tips</h3>
-                <ol>
-                    <li>Best time to visit: Late spring through early autumn (May to September).</li>
-                    <li>Currency: Kazakhstani Tenge (KZT). Card payments are widely accepted.</li>
-                    <li>Getting around: Easy access via city buses and ride-hailing apps.</li>
-                </ol>
-            </section>
-        </main>
+        <!-- Task 3: 2-column layout (col-lg-6) with Responsive Spacing (Task 4: mt-lg-4) -->
+        <section class="mt-lg-4 mb-4">
+            <h2 class="section-heading">Visitor Essentials</h2>
+            <div class="row g-4">
+                <div class="col-12 col-lg-6">
+                    <div class="p-4 bg-white rounded-4 shadow-sm border h-100">
+                        <h3 class="h5">Quick Travel Tips</h3>
+                        <ul class="mb-0">
+                            <li><strong>Best Time to Visit:</strong> May through September for pleasant weather.</li>
+                            <li><strong>Currency:</strong> Kazakhstani Tenge (KZT). Cards are widely accepted.</li>
+                            <li><strong>Public Transport:</strong> Buses 10 and 12 connect the airport directly to downtown.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-12 col-lg-6">
+                    <div class="p-4 bg-white rounded-4 shadow-sm border h-100">
+                        <h3 class="h5">Tourist Information Kiosks</h3>
+                        <p>Official visitor kiosks are located inside Nursultan Nazarbayev International Airport (NQZ) and Nur-Sultan-1 Railway Station offering free bilingual city maps and assistance.</p>
+                        <a href="tours.html" class="btn btn-primary btn-sm">Explore Tour Options</a>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-        <!-- Footer -->
-        <footer>
-            <p>Project Team Members: Zhanserik Abilgali, Akniyet Zhanarbek</p>
-            <p>&copy; This page made by Akniyet Zhanarbek</p>
-        </footer>
-    </div>
+    </main>
 
+    <!-- Footer -->
+    <footer class="text-center">
+        <div class="container">
+            <p class="mb-1">Project Team Members: Zhanserik Abilgali, Akniyet Zhanarbek</p>
+            <p class="mb-0 text-white-50"><small>&copy; This page made by Akniyet Zhanarbek</small></p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
