@@ -1,20 +1,20 @@
-/* Typography & Cozy Theme Base */
+/* Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap');
 
+/* Color Variables */
 :root {
     --primary: #1a3328;
     --primary-dark: #11251e;
     --accent: #d67138;
     --accent-dark: #c45e24;
     --bg-page: #faf5ee;
-    --bg-sidebar: #f4ecdf;
     --text-main: #43362a;
-    --text-muted: #55473a;
     --border-card: #ebdec9;
 }
 
+/* Base Body Styles */
 body {
-    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-family: 'Plus Jakarta Sans', sans-serif;
     color: var(--text-main);
     background-color: var(--bg-page);
     background-image: radial-gradient(#ecdcc9 0.8px, transparent 0.8px), radial-gradient(#ecdcc9 0.8px, var(--bg-page) 0.8px);
@@ -23,10 +23,7 @@ body {
     line-height: 1.65;
 }
 
-/* ====================================================
-   TASK 1: Responsive Typography using Pure CSS Media Queries
-   Mobile: Small | Tablet: Medium | Desktop: Large
-   ==================================================== */
+/* Headings */
 h1, h2, h3, h4 {
     font-family: 'Playfair Display', Georgia, serif;
     color: var(--primary);
@@ -40,7 +37,7 @@ h3 { font-size: 1.15rem; }
 p, li { font-size: 0.92rem; }
 
 /* Tablet Typography */
-@media (min-width: 768px) and (max-width: 1023px) {
+@media (min-width: 768px) {
     h1 { font-size: 1.9rem; }
     h2 { font-size: 1.6rem; }
     h3 { font-size: 1.3rem; }
@@ -55,13 +52,14 @@ p, li { font-size: 0.92rem; }
     p, li { font-size: 1.02rem; }
 }
 
-/* Section Headings */
+/* Section Title Underline */
 h2.section-heading {
     position: relative;
     display: inline-block;
     padding-bottom: 6px;
     margin-bottom: 18px;
 }
+
 h2.section-heading::after {
     content: '';
     position: absolute;
@@ -69,11 +67,11 @@ h2.section-heading::after {
     bottom: 0;
     width: 36px;
     height: 3px;
-    background: var(--accent);
+    background-color: var(--accent);
     border-radius: 4px;
 }
 
-/* Bootstrap Navbar Customization */
+/* Navigation Bar */
 .custom-navbar {
     background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%) !important;
     box-shadow: 0 4px 18px rgba(18, 35, 29, 0.15);
@@ -85,7 +83,7 @@ h2.section-heading::after {
     border-radius: 50%;
     border: 2.5px solid var(--accent);
     object-fit: cover;
-    background-color: #fff;
+    background-color: #ffffff;
 }
 
 .nav-link {
@@ -93,7 +91,7 @@ h2.section-heading::after {
     font-weight: 600;
     border-radius: 20px;
     padding: 8px 16px !important;
-    transition: all 0.25s ease;
+    transition: 0.2s ease;
 }
 
 .nav-link:hover {
@@ -106,27 +104,31 @@ h2.section-heading::after {
     color: #ffffff !important;
 }
 
-/* Button Styling */
+/* Buttons */
 .btn-primary {
-    background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
+    background-color: var(--accent);
     border-color: var(--accent);
-    color: #fff;
+    color: #ffffff;
 }
-.btn-primary:hover, .btn-primary:focus {
-    background: var(--accent-dark);
+
+.btn-primary:hover,
+.btn-primary:focus {
+    background-color: var(--accent-dark);
     border-color: var(--accent-dark);
 }
+
 .btn-outline-primary {
     color: var(--accent);
     border-color: var(--accent);
 }
+
 .btn-outline-primary:hover {
     background-color: var(--accent);
     border-color: var(--accent);
-    color: #fff;
+    color: #ffffff;
 }
 
-/* Welcome Hero Image (Full width, no side margins) */
+/* Hero Image */
 .hero-card-img {
     width: 100%;
     height: 360px;
@@ -141,21 +143,16 @@ h2.section-heading::after {
     }
 }
 
-/* ====================================================
-   Carousel: Taller Height (Avoids cutting top and bottom)
-   Full container width matching sections above and below
-   ==================================================== */
+/* Carousel */
 .carousel-box {
     width: 100%;
-    max-width: 100%;
-    margin: 0;
     border-radius: 18px;
     overflow: hidden;
     box-shadow: 0 4px 14px rgba(120, 85, 55, 0.06);
 }
 
 .carousel-img {
-    width: 100% !important;
+    width: 100%;
     height: 620px;
     object-fit: cover;
     display: block;
@@ -173,7 +170,7 @@ h2.section-heading::after {
     }
 }
 
-/* Cards: Compact, Balanced Rectangles (Fills width completely) */
+/* Cards */
 .cozy-card {
     background-color: #ffffff;
     border: 1px solid var(--border-card);
@@ -199,10 +196,7 @@ h2.section-heading::after {
     padding: 20px;
 }
 
-/* ====================================================
-   TASK 2: Pure CSS 3-Card Group (NO BOOTSTRAP)
-   Desktop: 3 side-by-side | Tablet: 2 in row | Mobile: 1 stacked
-   ==================================================== */
+/* Pure CSS Card Layout (No Bootstrap Grid) */
 .pure-card-row {
     display: flex;
     flex-wrap: wrap;
@@ -219,7 +213,7 @@ h2.section-heading::after {
     box-shadow: 0 4px 12px rgba(120, 85, 55, 0.04);
 }
 
-@media (max-width: 991px) and (min-width: 576px) {
+@media (max-width: 991px) {
     .pure-card {
         flex: 1 1 calc(50% - 20px);
     }
@@ -249,7 +243,7 @@ h2.section-heading::after {
     border-radius: 0 12px 12px 0;
 }
 
-/* Sidebar Widgets for Tours */
+/* Sidebar Box */
 .sidebar-widget {
     background-color: #ffffff;
     border: 1px solid #ebdccb;
