@@ -1,7 +1,6 @@
-/* Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap');
 
-/* Color Variables */
+/* Colors */
 :root {
     --primary: #1a3328;
     --primary-dark: #11251e;
@@ -12,7 +11,7 @@
     --border-card: #ebdec9;
 }
 
-/* Base Body Styles */
+/* Base */
 body {
     font-family: 'Plus Jakarta Sans', sans-serif;
     color: var(--text-main);
@@ -23,28 +22,25 @@ body {
     line-height: 1.65;
 }
 
-/* Headings */
+/* Typography */
 h1, h2, h3, h4 {
     font-family: 'Playfair Display', Georgia, serif;
     color: var(--primary);
     font-weight: 700;
 }
 
-/* Mobile Typography (Default) */
 h1 { font-size: 1.5rem; }
 h2 { font-size: 1.35rem; }
 h3 { font-size: 1.15rem; }
 p, li { font-size: 0.92rem; }
 
-/* Tablet Typography */
-@media (min-width: 768px) {
+@media (min-width: 768px) and (max-width: 1023px) {
     h1 { font-size: 1.9rem; }
     h2 { font-size: 1.6rem; }
     h3 { font-size: 1.3rem; }
     p, li { font-size: 0.98rem; }
 }
 
-/* Desktop Typography */
 @media (min-width: 1024px) {
     h1 { font-size: 2.35rem; }
     h2 { font-size: 1.85rem; }
@@ -52,7 +48,6 @@ p, li { font-size: 0.92rem; }
     p, li { font-size: 1.02rem; }
 }
 
-/* Section Title Underline */
 h2.section-heading {
     position: relative;
     display: inline-block;
@@ -71,7 +66,7 @@ h2.section-heading::after {
     border-radius: 4px;
 }
 
-/* Navigation Bar */
+/* Navbar */
 .custom-navbar {
     background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%) !important;
     box-shadow: 0 4px 18px rgba(18, 35, 29, 0.15);
@@ -171,7 +166,7 @@ h2.section-heading::after {
 }
 
 /* Cards */
-.cozy-card {
+.card {
     background-color: #ffffff;
     border: 1px solid var(--border-card);
     border-radius: 18px;
@@ -180,23 +175,23 @@ h2.section-heading::after {
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.cozy-card:hover {
+.card:hover {
     transform: translateY(-4px);
     box-shadow: 0 10px 24px rgba(120, 85, 55, 0.12);
 }
 
-.cozy-card .card-img-top {
+.card .card-img-top {
     width: 100%;
     height: 200px;
     object-fit: cover;
     display: block;
 }
 
-.cozy-card .card-body {
+.card .card-body {
     padding: 20px;
 }
 
-/* Pure CSS Card Layout (No Bootstrap Grid) */
+/* Pure CSS Cards */
 .pure-card-row {
     display: flex;
     flex-wrap: wrap;
@@ -213,7 +208,7 @@ h2.section-heading::after {
     box-shadow: 0 4px 12px rgba(120, 85, 55, 0.04);
 }
 
-@media (max-width: 991px) {
+@media (max-width: 991px) and (min-width: 576px) {
     .pure-card {
         flex: 1 1 calc(50% - 20px);
     }
@@ -243,7 +238,7 @@ h2.section-heading::after {
     border-radius: 0 12px 12px 0;
 }
 
-/* Sidebar Box */
+/* Sidebar */
 .sidebar-widget {
     background-color: #ffffff;
     border: 1px solid #ebdccb;

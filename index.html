@@ -9,9 +9,9 @@
 </head>
 <body>
 
-    <!-- Navigation -->
+    <!-- Navbar -->
     <header class="sticky-top">
-        <nav class="navbar navbar-expand-lg custom-navbar py-2 px-3 px-sm-4">
+        <nav class="navbar navbar-expand-lg custom-navbar py-2 px-3 px-sm-4" aria-label="Main Navigation">
             <div class="container-fluid">
                 <a class="navbar-brand d-flex align-items-center gap-2 text-white" href="index.html">
                     <img src="images/astana-logo.svg" alt="Visit Astana Logo" class="logo-badge">
@@ -20,7 +20,7 @@
                         <small class="text-white-50">Heart of the Great Steppe</small>
                     </div>
                 </a>
-                <button class="navbar-toggler border-white text-white" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar">
+                <button class="navbar-toggler border-white text-white" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon" style="filter: invert(1);"></span>
                 </button>
                 <div class="collapse navbar-collapse justify-content-end" id="mainNavbar">
@@ -36,12 +36,12 @@
     </header>
 
     <main class="container my-4 my-lg-5 px-sm-2">
-        <!-- Hero Section -->
+        <!-- Hero -->
         <section class="p-4 mb-5 bg-white rounded-4 shadow-sm border">
             <img src="images/welcome_to_Astana.jpg" alt="Welcome to Astana" class="hero-card-img shadow-sm mb-4">
             <h1 class="display-6 fw-bold">Welcome to Astana</h1>
             <p class="lead text-muted mb-3">Astana is a unique blend of futuristic architecture, rich nomadic heritage, and warm steppe hospitality.</p>
-            <div class="btn-group mt-2">
+            <div class="btn-group mt-2" role="group" aria-label="Quick Navigation">
                 <a href="attractions.html" class="btn btn-primary btn-sm">View Landmarks</a>
                 <a href="tours.html" class="btn btn-outline-secondary btn-sm">Book a Tour</a>
                 <a href="history.html" class="btn btn-outline-secondary btn-sm">Culture</a>
@@ -54,15 +54,15 @@
             <div class="carousel-box border">
                 <div id="astanaCarousel" class="carousel slide" data-bs-ride="carousel">
                     <div class="carousel-indicators">
-                        <button type="button" data-bs-target="#astanaCarousel" data-bs-slide-to="0" class="active"></button>
-                        <button type="button" data-bs-target="#astanaCarousel" data-bs-slide-to="1"></button>
-                        <button type="button" data-bs-target="#astanaCarousel" data-bs-slide-to="2"></button>
-                        <button type="button" data-bs-target="#astanaCarousel" data-bs-slide-to="3"></button>
-                        <button type="button" data-bs-target="#astanaCarousel" data-bs-slide-to="4"></button>
-                        <button type="button" data-bs-target="#astanaCarousel" data-bs-slide-to="5"></button>
-                        <button type="button" data-bs-target="#astanaCarousel" data-bs-slide-to="6"></button>
-                        <button type="button" data-bs-target="#astanaCarousel" data-bs-slide-to="7"></button>
-                        <button type="button" data-bs-target="#astanaCarousel" data-bs-slide-to="8"></button>
+                        <button type="button" data-bs-target="#astanaCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                        <button type="button" data-bs-target="#astanaCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                        <button type="button" data-bs-target="#astanaCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                        <button type="button" data-bs-target="#astanaCarousel" data-bs-slide-to="3" aria-label="Slide 4"></button>
+                        <button type="button" data-bs-target="#astanaCarousel" data-bs-slide-to="4" aria-label="Slide 5"></button>
+                        <button type="button" data-bs-target="#astanaCarousel" data-bs-slide-to="5" aria-label="Slide 6"></button>
+                        <button type="button" data-bs-target="#astanaCarousel" data-bs-slide-to="6" aria-label="Slide 7"></button>
+                        <button type="button" data-bs-target="#astanaCarousel" data-bs-slide-to="7" aria-label="Slide 8"></button>
+                        <button type="button" data-bs-target="#astanaCarousel" data-bs-slide-to="8" aria-label="Slide 9"></button>
                     </div>
 
                     <div class="carousel-inner">
@@ -132,21 +132,23 @@
                     </div>
 
                     <button class="carousel-control-prev" type="button" data-bs-target="#astanaCarousel" data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon"></span>
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
                     </button>
                     <button class="carousel-control-next" type="button" data-bs-target="#astanaCarousel" data-bs-slide="next">
-                        <span class="carousel-control-next-icon"></span>
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
                     </button>
                 </div>
             </div>
         </section>
 
-        <!-- Featured Highlights Grid -->
+        <!-- Highlights -->
         <section class="mb-5">
             <h2 class="section-heading">Featured Highlights</h2>
             <div class="row g-4">
                 <div class="col-12 col-md-6 col-lg-4">
-                    <div class="card h-100 cozy-card">
+                    <div class="card h-100">
                         <img src="images/baiterek.jpg" class="card-img-top" alt="Baiterek">
                         <div class="card-body d-flex flex-column">
                             <h3 class="card-title h5">Baiterek Tower</h3>
@@ -157,7 +159,7 @@
                 </div>
 
                 <div class="col-12 col-md-6 col-lg-4">
-                    <div class="card h-100 cozy-card">
+                    <div class="card h-100">
                         <img src="images/khan-shatyr.jpg" class="card-img-top" alt="Khan Shatyr">
                         <div class="card-body d-flex flex-column">
                             <h3 class="card-title h5">Khan Shatyr</h3>
@@ -168,7 +170,7 @@
                 </div>
 
                 <div class="col-12 col-md-6 col-lg-4">
-                    <div class="card h-100 cozy-card">
+                    <div class="card h-100">
                         <img src="images/hazret-sultan.jpg" class="card-img-top" alt="Hazret Sultan">
                         <div class="card-body d-flex flex-column">
                             <h3 class="card-title h5">Hazret Sultan</h3>
@@ -180,7 +182,7 @@
             </div>
         </section>
 
-        <!-- Information Columns -->
+        <!-- Visitor Info -->
         <section class="mt-lg-4 mb-4">
             <h2 class="section-heading">Visitor Essentials</h2>
             <div class="row g-4">
