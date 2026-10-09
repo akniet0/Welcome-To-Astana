@@ -123,6 +123,20 @@ h2.section-heading::after {
     color: #ffffff;
 }
 
+/* Responsive Action Buttons (Hero) */
+@media (max-width: 575px) {
+    .hero-btn-group {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        gap: 10px;
+    }
+    .hero-btn-group .btn {
+        width: 100%;
+        border-radius: 8px !important;
+    }
+}
+
 /* Hero Image */
 .hero-card-img {
     width: 100%;
@@ -191,7 +205,7 @@ h2.section-heading::after {
     padding: 20px;
 }
 
-/* Pure CSS Cards */
+/* Pure CSS Cards (Fixed Flexbox math) */
 .pure-card-row {
     display: flex;
     flex-wrap: wrap;
@@ -199,7 +213,7 @@ h2.section-heading::after {
 }
 
 .pure-card {
-    flex: 1 1 calc(33.333% - 20px);
+    flex: 1 1 calc((100% - 40px) / 3);
     background-color: #faf5ed;
     border: 1px solid var(--border-card);
     border-radius: 16px;
@@ -210,7 +224,7 @@ h2.section-heading::after {
 
 @media (max-width: 991px) and (min-width: 576px) {
     .pure-card {
-        flex: 1 1 calc(50% - 20px);
+        flex: 1 1 calc((100% - 20px) / 2);
     }
 }
 
@@ -232,7 +246,7 @@ h2.section-heading::after {
 /* Timeline */
 .timeline-card {
     border-left: 4px solid var(--accent);
-    padding: 10px 0 10px 18px;
+    padding: 12px 16px 12px 18px;
     margin: 16px 0;
     background-color: #faf4eb;
     border-radius: 0 12px 12px 0;
