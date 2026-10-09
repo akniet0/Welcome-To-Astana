@@ -1,4 +1,4 @@
-# Visit Astana - Web Development Final Project
+# Visit Astana - Web Development 
 
 A responsive tourism web application highlighting the culture, modern architecture, and travel itineraries of Astana, Kazakhstan.
 
