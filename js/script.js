@@ -1,6 +1,3 @@
-/* ==========================================================================
-   1. SOUND EFFECTS (Web Audio API - No external MP3 required, non-overlapping)
-   ========================================================================== */
 let audioCtx = null;
 
 function playUiSound(type = "click") {
@@ -42,9 +39,6 @@ function playUiSound(type = "click") {
     }
 }
 
-/* ==========================================================================
-   2. ANIMATION HELPER (Event-triggered style.transform animation)
-   ========================================================================== */
 function animateElementPop(element) {
     if (!element) return;
     element.style.transition = "transform 0.22s ease";
@@ -54,9 +48,7 @@ function animateElementPop(element) {
     }, 220);
 }
 
-/* ==========================================================================
-   3. CURRENT LANGUAGE STATE & FULL-SITE TRANSLATION DICTIONARIES
-   ========================================================================== */
+
 let currentLang = localStorage.getItem("astanaLang") || "en";
 
 const uiTranslations = {
@@ -179,7 +171,6 @@ const uiTranslations = {
     }
 };
 
-// Full-page exact text translations for all static elements across all 4 pages
 const fullPageTextMap = {
     // Home Page
     "Greet Me": { ru: "Поприветствовать", kz: "Сәлемдесу" },
@@ -414,9 +405,7 @@ const placeholderMap = {
     "Re-enter password": { ru: "Повторите пароль", kz: "Құпиясөзді қайталаңыз" }
 };
 
-/* ==========================================================================
-   4. LIVE CLOCK & TIME-OF-DAY GREETING (Switch Statement)
-   ========================================================================== */
+
 function updateDateTime() {
     const timeDisplay = document.getElementById("live-datetime");
     if (!timeDisplay) return;
@@ -453,9 +442,6 @@ function setTimeOfDayGreeting() {
     greetingBadge.textContent = message;
 }
 
-/* ==========================================================================
-   5. DYNAMIC STYLING: BACKGROUND COLOR CYCLER & DAY/NIGHT THEME TOGGLE
-   ========================================================================== */
 const bgColorButton = document.getElementById("change-bg-btn");
 if (bgColorButton) {
     const colors = ["#faf5ee", "#f0f4f1", "#fdf6e2", "#f5e6d3", "#e8eff5"];
@@ -507,9 +493,6 @@ if (themeToggleBtn) {
     });
 }
 
-/* ==========================================================================
-   6.KEYBOARD EVENT HANDLING (ArrowLeft / ArrowRight on Navigation Menu)
-   ========================================================================== */
 const navLinks = document.querySelectorAll("#keyboard-nav-menu .nav-link");
 if (navLinks.length > 0) {
     navLinks.forEach(function (link, index) {
@@ -529,9 +512,6 @@ if (navLinks.length > 0) {
     });
 }
 
-/* ==========================================================================
-   7. HOME PAGE: DYNAMIC GREETING, CURRENT TIME BUTTON & RANDOM FACT GENERATOR
-   ========================================================================== */
 const updateGreetingBtn = document.getElementById("update-greeting-btn");
 const visitorNameInput = document.getElementById("visitor-name-input");
 const personalizedGreeting = document.getElementById("personalized-greeting");
@@ -606,9 +586,6 @@ if (newFactBtn && factBox) {
     });
 }
 
-/* ==========================================================================
-   8. HISTORY PAGE: READ MORE TOGGLE (style.display) & LOAD MORE DISHES
-   ========================================================================== */
 const readMoreBtn = document.getElementById("read-more-btn");
 const moreHistoryContent = document.getElementById("more-history-content");
 
@@ -695,9 +672,7 @@ if (loadMoreDishesBtn && dishesContainer) {
     });
 }
 
-/* ==========================================================================
-   9. ATTRACTIONS PAGE: 5-STAR RATING (querySelectorAll) & IMAGE GALLERY
-   ========================================================================== */
+
 const ratingContainers = document.querySelectorAll(".star-rating");
 ratingContainers.forEach(function (container) {
     const stars = container.querySelectorAll(".rating-star");
@@ -753,9 +728,6 @@ if (galleryFeaturedImg && galleryThumbs.length > 0) {
     });
 }
 
-/* ==========================================================================
-   10. TOURS PAGE: OBJECTS & METHODS, ARRAYS, LOOPS, HIGHER-ORDER FUNCTIONS
-   ========================================================================== */
 const astanaToursData = [
     {
         id: "arch",
@@ -911,9 +883,6 @@ if (tourFilterBtns.length > 0) {
     });
 }
 
-/* ==========================================================================
-   11. MULTI-STEP FORM WITH CALLBACKS, REGEX VALIDATION & FORM RESET BUTTON
-   ========================================================================== */
 let currentFormStep = 1;
 
 function navigateFormStep(targetStepNumber, onStepChangedCallback) {
@@ -1048,9 +1017,6 @@ if (bookingForm) {
     });
 }
 
-/* ==========================================================================
-   12. MODAL POPUP WITH ASYNCHRONOUS CALLBACK SUBMISSION & ACCORDION
-   ========================================================================== */
 const openModalBtn = document.getElementById("open-popup-btn");
 const closeModalBtn = document.getElementById("close-popup-btn");
 const popupModal = document.getElementById("popup-modal");
@@ -1155,9 +1121,6 @@ accordionQuestions.forEach(function (button) {
     });
 });
 
-/* ==========================================================================
-   13. FULL-PAGE SWITCH STATEMENT TRANSLATOR (Translates all text & inputs)
-   ========================================================================== */
 function switchSiteLanguage(langCode) {
     let selectedDictionary;
 
