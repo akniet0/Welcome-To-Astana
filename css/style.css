@@ -7,8 +7,25 @@
     --accent: #d67138;
     --accent-dark: #c45e24;
     --bg-page: #faf5ee;
+    --bg-surface: #ffffff;
+    --bg-soft: #faf4eb;
     --text-main: #43362a;
+    --text-muted-custom: #6c757d;
     --border-card: #ebdec9;
+}
+
+/* Night Theme Variables */
+body.dark-theme {
+    --primary: #8fd9b6;
+    --primary-dark: #0b1713;
+    --accent: #e5854f;
+    --accent-dark: #d67138;
+    --bg-page: #121a16;
+    --bg-surface: #1b2822;
+    --bg-soft: #22332b;
+    --text-main: #e8ece9;
+    --text-muted-custom: #b0c2b8;
+    --border-card: #2e4439;
 }
 
 /* Base */
@@ -17,7 +34,98 @@ body {
     color: var(--text-main);
     background-color: var(--bg-page);
     line-height: 1.65;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.35s ease, color 0.35s ease;
+}
+
+/* Night Mode Overrides for Bootstrap surface classes */
+body.dark-theme .bg-white,
+body.dark-theme .card,
+body.dark-theme .sidebar-widget,
+body.dark-theme .accordion-item-simple,
+body.dark-theme .accordion-question,
+body.dark-theme .modal-content-box {
+    background-color: var(--bg-surface) !important;
+    color: var(--text-main) !important;
+    border-color: var(--border-card) !important;
+}
+
+body.dark-theme .bg-light,
+body.dark-theme .pure-card,
+body.dark-theme .timeline-card,
+body.dark-theme .accordion-answer {
+    background-color: var(--bg-soft) !important;
+    color: var(--text-main) !important;
+    border-color: var(--border-card) !important;
+}
+
+body.dark-theme .badge.bg-light {
+    background-color: var(--bg-soft) !important;
+    color: var(--text-main) !important;
+    border-color: var(--border-card) !important;
+}
+
+body.dark-theme .text-muted {
+    color: var(--text-muted-custom) !important;
+}
+
+/* Fix Bootstrap 5.3 Table White Background in Night Mode */
+body.dark-theme .table {
+    --bs-table-bg: var(--bg-surface);
+    --bs-table-color: var(--text-main);
+    --bs-table-border-color: var(--border-card);
+    --bs-table-hover-bg: var(--bg-soft);
+    --bs-table-hover-color: #ffffff;
+    color: var(--text-main) !important;
+    border-color: var(--border-card) !important;
+}
+
+body.dark-theme .table > :not(caption) > * > * {
+    background-color: var(--bg-surface) !important;
+    color: var(--text-main) !important;
+    border-bottom-color: var(--border-card) !important;
+}
+
+body.dark-theme .table-hover > tbody > tr:hover > * {
+    background-color: var(--bg-soft) !important;
+    color: #ffffff !important;
+}
+
+body.dark-theme .table-dark > tr > th {
+    background-color: #0d1713 !important;
+    color: #e8ece9 !important;
+    border-bottom-color: var(--border-card) !important;
+}
+
+body.dark-theme .form-control,
+body.dark-theme .form-select {
+    background-color: var(--bg-soft);
+    color: var(--text-main);
+    border-color: var(--border-card);
+}
+
+body.dark-theme .form-control::placeholder {
+    color: var(--text-muted-custom);
+}
+
+/* Dark-styled Night Mode Toggle Button */
+#theme-toggle-btn {
+    background-color: #0d1b15 !important;
+    color: #f1eae0 !important;
+    border: 1px solid rgba(255, 255, 255, 0.35) !important;
+    font-weight: 500;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+#theme-toggle-btn:hover {
+    background-color: #243d32 !important;
+    color: #ffffff !important;
+    border-color: var(--accent) !important;
+}
+
+body.dark-theme #theme-toggle-btn {
+    background-color: #263b31 !important;
+    color: #ffdf8e !important;
+    border-color: #8fd9b6 !important;
 }
 
 /* Typography */
@@ -66,8 +174,12 @@ h2.section-heading::after {
 
 /* Navbar */
 .custom-navbar {
-    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%) !important;
+    background: linear-gradient(135deg, #1a3328 0%, #11251e 100%) !important;
     box-shadow: 0 4px 18px rgba(18, 35, 29, 0.15);
+}
+
+.navbar-toggler-inverted {
+    filter: invert(1);
 }
 
 .logo-badge {
@@ -87,14 +199,30 @@ h2.section-heading::after {
     transition: 0.2s ease;
 }
 
-.nav-link:hover {
-    background-color: rgba(255, 255, 255, 0.12);
+.nav-link:hover,
+.nav-link:focus {
+    background-color: rgba(255, 255, 255, 0.18);
     color: #ffffff !important;
+    outline: 2px solid var(--accent);
 }
 
 .nav-link.active {
     background-color: var(--accent) !important;
     color: #ffffff !important;
+}
+
+.lang-select-nav {
+    width: auto;
+    min-width: 78px;
+    background-color: rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    font-size: 0.85rem;
+}
+
+.lang-select-nav option {
+    color: #1a3328;
+    background-color: #ffffff;
 }
 
 /* Buttons */
@@ -115,7 +243,8 @@ h2.section-heading::after {
     border-color: var(--accent);
 }
 
-.btn-outline-primary:hover {
+.btn-outline-primary:hover,
+.btn-outline-primary.active {
     background-color: var(--accent);
     border-color: var(--accent);
     color: #ffffff;
@@ -179,12 +308,12 @@ h2.section-heading::after {
 
 /* Cards */
 .card {
-    background-color: #ffffff;
+    background-color: var(--bg-surface);
     border: 1px solid var(--border-card);
     border-radius: 18px;
     overflow: hidden;
     box-shadow: 0 4px 14px rgba(120, 85, 55, 0.05);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .card:hover {
@@ -203,6 +332,74 @@ h2.section-heading::after {
     padding: 20px;
 }
 
+/* Star Rating Component */
+.star-rating {
+    display: inline-flex;
+    gap: 4px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.rating-star {
+    font-size: 1.35rem;
+    color: #cbd5e1;
+    transition: transform 0.15s ease, color 0.15s ease;
+}
+
+.rating-star:hover {
+    transform: scale(1.2);
+}
+
+.rating-star.selected {
+    color: #f59e0b;
+}
+
+/* Thumbnail Gallery */
+.gallery-main-img {
+    width: 100%;
+    height: 380px;
+    object-fit: cover;
+    border-radius: 14px;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.gallery-thumb {
+    width: 100%;
+    height: 85px;
+    object-fit: cover;
+    border-radius: 10px;
+    cursor: pointer;
+    border: 3px solid transparent;
+    opacity: 0.75;
+    transition: transform 0.2s ease, opacity 0.2s ease, border-color 0.2s ease;
+}
+
+.gallery-thumb:hover,
+.gallery-thumb.active-thumb {
+    opacity: 1;
+    border-color: var(--accent);
+    transform: translateY(-2px);
+}
+
+/* Hidden Read More Content */
+.read-more-content {
+    display: none;
+}
+
+/* Tour Preview Avatar */
+.tour-avatar {
+    object-fit: cover;
+}
+
+/* Multi-step Form */
+.form-step {
+    display: none;
+}
+
+.form-step.active-step {
+    display: block;
+}
+
 /* Pure CSS Cards */
 .pure-card-row {
     display: flex;
@@ -212,12 +409,13 @@ h2.section-heading::after {
 
 .pure-card {
     flex: 1 1 calc((100% - 40px) / 3);
-    background-color: #faf5ed;
+    background-color: var(--bg-soft);
     border: 1px solid var(--border-card);
     border-radius: 16px;
     padding: 20px;
     text-align: center;
     box-shadow: 0 4px 12px rgba(120, 85, 55, 0.04);
+    transition: transform 0.3s ease;
 }
 
 @media (max-width: 991px) and (min-width: 576px) {
@@ -246,14 +444,14 @@ h2.section-heading::after {
     border-left: 4px solid var(--accent);
     padding: 12px 16px 12px 18px;
     margin: 16px 0;
-    background-color: #faf4eb;
+    background-color: var(--bg-soft);
     border-radius: 0 12px 12px 0;
 }
 
 /* Sidebar */
 .sidebar-widget {
-    background-color: #ffffff;
-    border: 1px solid #ebdccb;
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-card);
     border-radius: 16px;
     padding: 20px;
     margin-bottom: 20px;
@@ -276,18 +474,19 @@ footer {
     padding: 6px 12px;
     border-radius: 20px;
 }
+
 .accordion-item-simple {
     border: 1px solid var(--border-card);
     border-radius: 8px;
     margin-bottom: 10px;
     overflow: hidden;
-    background: #ffffff;
+    background: var(--bg-surface);
 }
 
 .accordion-question {
     width: 100%;
     padding: 12px 16px;
-    background: #ffffff;
+    background: var(--bg-surface);
     border: none;
     text-align: left;
     font-weight: 600;
@@ -297,7 +496,7 @@ footer {
 }
 
 .accordion-question:hover {
-    background-color: #faf5ee;
+    background-color: var(--bg-soft);
 }
 
 .accordion-answer {
@@ -305,7 +504,7 @@ footer {
     overflow: hidden;
     transition: max-height 0.3s ease, padding 0.3s ease;
     padding: 0 16px;
-    background-color: #fdfbf7;
+    background-color: var(--bg-soft);
     margin: 0;
     color: var(--text-main);
 }
@@ -330,7 +529,7 @@ footer {
 }
 
 .modal-content-box {
-    background-color: #ffffff;
+    background-color: var(--bg-surface);
     padding: 24px;
     border-radius: 12px;
     width: 90%;
@@ -345,5 +544,6 @@ footer {
     font-size: 1.5rem;
     border: none;
     background: transparent;
+    color: var(--text-main);
     cursor: pointer;
 }

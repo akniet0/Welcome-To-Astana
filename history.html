@@ -17,27 +17,32 @@
                 <a class="navbar-brand d-flex align-items-center gap-2 text-white" href="index.html">
                     <img src="images/astana-logo.svg" alt="Visit Astana Logo" class="logo-badge">
                     <div>
-                        <span class="h5 m-0 d-block text-white">Visit Astana</span>
-                        <small class="text-white-50">Heart of the Great Steppe</small>
+                        <span class="h5 m-0 d-block text-white" data-i18n="brandTitle">Visit Astana</span>
+                        <small class="text-white-50" data-i18n="brandSub">Heart of the Great Steppe</small>
                     </div>
                 </a>
                 
                 <button class="navbar-toggler border-white text-white" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon" style="filter: invert(1);"></span>
+                    <span class="navbar-toggler-icon navbar-toggler-inverted"></span>
                 </button>
                 
                 <div class="collapse navbar-collapse justify-content-end" id="mainNavbar">
-                  
-                    <span id="live-datetime" class="datetime-badge my-2 my-lg-0 me-lg-3">Loading date...</span>
+                    <span id="live-datetime" class="datetime-badge my-2 my-lg-0 me-lg-2">Loading date...</span>
                     
-                  
-                    <button id="change-bg-btn" class="btn btn-outline-light btn-sm my-2 my-lg-0 me-lg-3">Change Background</button>
+                    <button id="change-bg-btn" class="btn btn-outline-light btn-sm my-1 my-lg-0 me-lg-2" type="button" data-i18n="bgBtn">Change Background</button>
+                    <button id="theme-toggle-btn" class="btn btn-warning btn-sm my-1 my-lg-0 me-lg-2" type="button">🌙 Night Mode</button>
 
-                    <ul class="navbar-nav gap-lg-2 mt-3 mt-lg-0">
-                        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-                        <li class="nav-item"><a class="nav-link active" href="history.html">History & Culture</a></li>
-                        <li class="nav-item"><a class="nav-link" href="attractions.html">Attractions</a></li>
-                        <li class="nav-item"><a class="nav-link" href="tours.html">Tours</a></li>
+                    <select id="lang-selector" class="form-select form-select-sm lang-select-nav my-1 my-lg-0 me-lg-3" aria-label="Language Selector">
+                        <option value="en">EN</option>
+                        <option value="ru">RU</option>
+                        <option value="kz">KZ</option>
+                    </select>
+
+                    <ul class="navbar-nav gap-lg-1 mt-3 mt-lg-0" id="keyboard-nav-menu">
+                        <li class="nav-item"><a class="nav-link" href="index.html" data-i18n="navHome">Home</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="history.html" data-i18n="navHistory">History & Culture</a></li>
+                        <li class="nav-item"><a class="nav-link" href="attractions.html" data-i18n="navAttractions">Attractions</a></li>
+                        <li class="nav-item"><a class="nav-link" href="tours.html" data-i18n="navTours">Tours</a></li>
                     </ul>
                 </div>
             </div>
@@ -45,9 +50,9 @@
     </header>
 
     <main class="container my-4 my-lg-5 px-sm-2">
-        <!-- Timeline -->
+        <!-- Timeline with Read More Button (Manipulating style.display) -->
         <section class="p-4 p-md-5 mb-4 bg-white rounded-4 shadow-sm border">
-            <h1 class="section-heading">The Story of the Capital</h1>
+            <h1 class="section-heading" data-i18n="historyTitle">The Story of the Capital</h1>
             <p>From an 1830 steppe outpost to an internationally recognized center of diplomatic dialogue and futuristic architecture, explore how Astana evolved across two centuries.</p>
 
             <div class="timeline-card">
@@ -67,14 +72,34 @@
                 <h3>UNESCO "City of Peace"</h3>
                 <p class="mb-0">Awarded this title in recognition of its peaceful inter-ethnic harmony, cultural dialogue, and rapid international diplomatic role.</p>
             </div>
+
+            <!-- Read More Hidden Content -->
+            <div id="more-history-content" class="read-more-content">
+                <div class="timeline-card">
+                    <span class="badge bg-success mb-2">2017</span>
+                    <h3>EXPO 2017 "Future Energy"</h3>
+                    <p class="mb-0">Astana welcomed millions of global visitors and over 115 countries, unveiling the landmark Nur-Alem sphere and green technology district.</p>
+                </div>
+
+                <div class="timeline-card">
+                    <span class="badge bg-success mb-2">Today</span>
+                    <h3>Smart Hub of Central Asia</h3>
+                    <p class="mb-0">Home to Astana IT University, the Astana International Financial Centre (AIFC), and world-renowned cultural theaters.</p>
+                </div>
+            </div>
+
+            <button id="read-more-btn" class="btn btn-outline-primary btn-sm mt-2" type="button">Read More History</button>
         </section>
 
-        <!-- Food Cards -->
+        <!-- Food Cards + Dynamic Load More Content -->
         <section class="p-4 p-md-5 bg-white rounded-4 shadow-sm border">
-            <h2 class="section-heading">Flavors of the Steppe</h2>
+            <div class="d-flex flex-wrap justify-content-between align-items-center mb-2">
+                <h2 class="section-heading mb-0">Flavors of the Steppe</h2>
+                <button id="load-more-dishes-btn" class="btn btn-primary btn-sm" type="button">Load Traditional Delicacies</button>
+            </div>
             <p>Hearty, comforting dishes made for family feasts and cold winters:</p>
 
-            <div class="pure-card-row mt-3">
+            <div id="dishes-container" class="pure-card-row mt-3">
                 <article class="pure-card">
                     <img src="images/besh.jpg" alt="Beshbarmak" class="food-img-badge">
                     <h3>Beshbarmak</h3>
@@ -100,7 +125,7 @@
         <div class="container">
             <p class="mb-1">Academic Group: <strong>SE-2503</strong></p>
             <p class="mb-1">Project Team Members: <strong>Akniyet Zhanarbek</strong>, <strong>Zhanserik Abilgali</strong></p>
-            <p class="mb-0 text-white-50"><small>&copy; Visit Astana - Assignment #4</small></p>
+            <p class="mb-0 text-white-50"><small>&copy; Visit Astana - Assignment #5</small></p>
         </div>
     </footer>
 

@@ -17,26 +17,32 @@
                 <a class="navbar-brand d-flex align-items-center gap-2 text-white" href="index.html">
                     <img src="images/astana-logo.svg" alt="Visit Astana Logo" class="logo-badge">
                     <div>
-                        <span class="h5 m-0 d-block text-white">Visit Astana</span>
-                        <small class="text-white-50">Heart of the Great Steppe</small>
+                        <span class="h5 m-0 d-block text-white" data-i18n="brandTitle">Visit Astana</span>
+                        <small class="text-white-50" data-i18n="brandSub">Heart of the Great Steppe</small>
                     </div>
                 </a>
                 
                 <button class="navbar-toggler border-white text-white" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon" style="filter: invert(1);"></span>
+                    <span class="navbar-toggler-icon navbar-toggler-inverted"></span>
                 </button>
                 
                 <div class="collapse navbar-collapse justify-content-end" id="mainNavbar">
-                
-                    <span id="live-datetime" class="datetime-badge my-2 my-lg-0 me-lg-3">Loading date...</span>
+                    <span id="live-datetime" class="datetime-badge my-2 my-lg-0 me-lg-2">Loading date...</span>
                     
-                    <button id="change-bg-btn" class="btn btn-outline-light btn-sm my-2 my-lg-0 me-lg-3">Change Background</button>
+                    <button id="change-bg-btn" class="btn btn-outline-light btn-sm my-1 my-lg-0 me-lg-2" type="button" data-i18n="bgBtn">Change Background</button>
+                    <button id="theme-toggle-btn" class="btn btn-warning btn-sm my-1 my-lg-0 me-lg-2" type="button">🌙 Night Mode</button>
 
-                    <ul class="navbar-nav gap-lg-2 mt-3 mt-lg-0">
-                        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="history.html">History & Culture</a></li>
-                        <li class="nav-item"><a class="nav-link active" href="attractions.html">Attractions</a></li>
-                        <li class="nav-item"><a class="nav-link" href="tours.html">Tours</a></li>
+                    <select id="lang-selector" class="form-select form-select-sm lang-select-nav my-1 my-lg-0 me-lg-3" aria-label="Language Selector">
+                        <option value="en">EN</option>
+                        <option value="ru">RU</option>
+                        <option value="kz">KZ</option>
+                    </select>
+
+                    <ul class="navbar-nav gap-lg-1 mt-3 mt-lg-0" id="keyboard-nav-menu">
+                        <li class="nav-item"><a class="nav-link" href="index.html" data-i18n="navHome">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="history.html" data-i18n="navHistory">History & Culture</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="attractions.html" data-i18n="navAttractions">Attractions</a></li>
+                        <li class="nav-item"><a class="nav-link" href="tours.html" data-i18n="navTours">Tours</a></li>
                     </ul>
                 </div>
             </div>
@@ -46,11 +52,11 @@
     <main class="container my-4 my-lg-5 px-sm-2">
         <!-- Header -->
         <section class="p-4 p-md-5 mb-5 bg-white rounded-4 shadow-sm border">
-            <h1 class="section-heading">Must-See Landmarks in Astana</h1>
-            <p class="lead text-muted mb-0">Astana is world-renowned for its visionary skyline and monuments reflecting Kazakh identity, history, and architectural ambition.</p>
+            <h1 class="section-heading" data-i18n="attractionsTitle">Must-See Landmarks in Astana</h1>
+            <p class="lead text-muted mb-0">Astana is world-renowned for its visionary skyline and monuments reflecting Kazakh identity, history, and architectural ambition. Click the stars on any landmark to leave your visitor rating!</p>
         </section>
 
-        <!-- Historic Icons -->
+        <!-- Historic Icons with Interactive 5-Star Rating (querySelectorAll) -->
         <section class="mb-5">
             <h2 class="section-heading">Historic & Spiritual Icons</h2>
             <div class="row g-4">
@@ -63,11 +69,21 @@
                                 <span class="badge bg-success-subtle text-success border border-success-subtle">Top Pick</span>
                             </div>
                             <p class="card-text flex-grow-1 text-muted">The symbol of the capital, representing the mythical Tree of Life where the sacred bird Samruk laid a golden egg.</p>
-                            <ul class="list-unstyled small text-muted border-top pt-2 mb-0">
+                            <ul class="list-unstyled small text-muted border-top pt-2 mb-2">
                                 <li><strong>Height:</strong> 105 meters</li>
                                 <li><strong>Location:</strong> Nurzhol Boulevard</li>
                                 <li><strong>Observation:</strong> 360° panoramic glass dome</li>
                             </ul>
+                            <div class="d-flex justify-content-between align-items-center border-top pt-2">
+                                <div class="star-rating" data-landmark="Baiterek Tower">
+                                    <span class="rating-star" data-value="1">&#9733;</span>
+                                    <span class="rating-star" data-value="2">&#9733;</span>
+                                    <span class="rating-star" data-value="3">&#9733;</span>
+                                    <span class="rating-star" data-value="4">&#9733;</span>
+                                    <span class="rating-star" data-value="5">&#9733;</span>
+                                </div>
+                                <small class="rating-status text-muted">Rate landmark</small>
+                            </div>
                         </div>
                     </article>
                 </div>
@@ -81,11 +97,21 @@
                                 <span class="badge bg-warning-subtle text-dark border border-warning-subtle">Architecture</span>
                             </div>
                             <p class="card-text flex-grow-1 text-muted">Designed by Norman Foster, this is the world's largest tensile structure featuring retail and an indoor tropical beach.</p>
-                            <ul class="list-unstyled small text-muted border-top pt-2 mb-0">
+                            <ul class="list-unstyled small text-muted border-top pt-2 mb-2">
                                 <li><strong>Architect:</strong> Norman Foster</li>
                                 <li><strong>Location:</strong> Turan Avenue</li>
                                 <li><strong>Highlights:</strong> Sky Beach Club & shopping</li>
                             </ul>
+                            <div class="d-flex justify-content-between align-items-center border-top pt-2">
+                                <div class="star-rating" data-landmark="Khan Shatyr">
+                                    <span class="rating-star" data-value="1">&#9733;</span>
+                                    <span class="rating-star" data-value="2">&#9733;</span>
+                                    <span class="rating-star" data-value="3">&#9733;</span>
+                                    <span class="rating-star" data-value="4">&#9733;</span>
+                                    <span class="rating-star" data-value="5">&#9733;</span>
+                                </div>
+                                <small class="rating-status text-muted">Rate landmark</small>
+                            </div>
                         </div>
                     </article>
                 </div>
@@ -99,13 +125,55 @@
                                 <span class="badge bg-primary-subtle text-primary border border-primary-subtle">Heritage</span>
                             </div>
                             <p class="card-text flex-grow-1 text-muted">One of the largest mosques in Central Asia, featuring classic oriental architecture with traditional Kazakh decorative motifs.</p>
-                            <ul class="list-unstyled small text-muted border-top pt-2 mb-0">
+                            <ul class="list-unstyled small text-muted border-top pt-2 mb-2">
                                 <li><strong>Capacity:</strong> 10,000 worshippers</li>
                                 <li><strong>Location:</strong> Tauelsizdik Avenue</li>
                                 <li><strong>Material:</strong> White marble facade</li>
                             </ul>
+                            <div class="d-flex justify-content-between align-items-center border-top pt-2">
+                                <div class="star-rating" data-landmark="Hazret Sultan Mosque">
+                                    <span class="rating-star" data-value="1">&#9733;</span>
+                                    <span class="rating-star" data-value="2">&#9733;</span>
+                                    <span class="rating-star" data-value="3">&#9733;</span>
+                                    <span class="rating-star" data-value="4">&#9733;</span>
+                                    <span class="rating-star" data-value="5">&#9733;</span>
+                                </div>
+                                <small class="rating-status text-muted">Rate landmark</small>
+                            </div>
                         </div>
                     </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Thumbnail Image Gallery (Manipulating src & alt Attributes) -->
+        <section class="p-4 p-md-5 mb-5 bg-white rounded-4 shadow-sm border">
+            <h2 class="section-heading">Interactive Landmark Photo Explorer</h2>
+            <p class="text-muted">Click any thumbnail below to dynamically update the main display photograph:</p>
+
+            <div class="mb-3">
+                <img id="gallery-featured-img" src="images/baiterek.jpg" alt="Baiterek Tower" class="gallery-main-img shadow-sm">
+                <p id="gallery-caption" class="fw-semibold mt-2 mb-0">Baiterek Tower — Golden Observation Sphere on Nurzhol Boulevard</p>
+            </div>
+
+            <div class="row g-2">
+                <div class="col-4 col-md-2">
+                    <img src="images/baiterek.jpg" alt="Baiterek Tower — Golden Observation Sphere on Nurzhol Boulevard" class="gallery-thumb active-thumb">
+                </div>
+                <div class="col-4 col-md-2">
+                    <img src="images/khan-shatyr.jpg" alt="Khan Shatyr — Norman Foster's Iconic Transparent Tent" class="gallery-thumb">
+                </div>
+                <div class="col-4 col-md-2">
+                    <img src="images/hazret-sultan.jpg" alt="Hazret Sultan Mosque — White Marble Architectural Masterpiece" class="gallery-thumb">
+                </div>
+                <div class="col-4 col-md-2">
+                    <img src="images/nuralem.jpg" alt="Nur-Alem — Future Energy Sphere at EXPO District" class="gallery-thumb">
+                </div>
+                <div class="col-4 col-md-2">
+                    <img src="images/skyview.jpg" alt="Astana Skyview — Sunset Over the Ishim Riverfront" class="gallery-thumb">
+                </div>
+                <div class="col-4 col-md-2">
+                    <img src="images/oasis.jpg" alt="Indoor Oasis — Year-Round Subtropical Botanical Gardens" class="gallery-thumb">
                 </div>
             </div>
         </section>
@@ -176,7 +244,7 @@
         <div class="container">
             <p class="mb-1">Academic Group: <strong>SE-2503</strong></p>
             <p class="mb-1">Project Team Members: <strong>Akniyet Zhanarbek</strong>, <strong>Zhanserik Abilgali</strong></p>
-            <p class="mb-0 text-white-50"><small>&copy; Visit Astana - Assignment #4</small></p>
+            <p class="mb-0 text-white-50"><small>&copy; Visit Astana - Assignment #5</small></p>
         </div>
     </footer>
 

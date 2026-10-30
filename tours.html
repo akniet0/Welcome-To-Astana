@@ -17,26 +17,32 @@
                 <a class="navbar-brand d-flex align-items-center gap-2 text-white" href="index.html">
                     <img src="images/astana-logo.svg" alt="Visit Astana Logo" class="logo-badge">
                     <div>
-                        <span class="h5 m-0 d-block text-white">Visit Astana</span>
-                        <small class="text-white-50">Heart of the Great Steppe</small>
+                        <span class="h5 m-0 d-block text-white" data-i18n="brandTitle">Visit Astana</span>
+                        <small class="text-white-50" data-i18n="brandSub">Heart of the Great Steppe</small>
                     </div>
                 </a>
                 
                 <button class="navbar-toggler border-white text-white" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon" style="filter: invert(1);"></span>
+                    <span class="navbar-toggler-icon navbar-toggler-inverted"></span>
                 </button>
                 
                 <div class="collapse navbar-collapse justify-content-end" id="mainNavbar">
+                    <span id="live-datetime" class="datetime-badge my-2 my-lg-0 me-lg-2">Loading date...</span>
                     
-                    <span id="live-datetime" class="datetime-badge my-2 my-lg-0 me-lg-3">Loading date...</span>
-                    
-                    <button id="change-bg-btn" class="btn btn-outline-light btn-sm my-2 my-lg-0 me-lg-3">Change Background</button>
+                    <button id="change-bg-btn" class="btn btn-outline-light btn-sm my-1 my-lg-0 me-lg-2" type="button" data-i18n="bgBtn">Change Background</button>
+                    <button id="theme-toggle-btn" class="btn btn-warning btn-sm my-1 my-lg-0 me-lg-2" type="button">🌙 Night Mode</button>
 
-                    <ul class="navbar-nav gap-lg-2 mt-3 mt-lg-0">
-                        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="history.html">History & Culture</a></li>
-                        <li class="nav-item"><a class="nav-link" href="attractions.html">Attractions</a></li>
-                        <li class="nav-item"><a class="nav-link active" href="tours.html">Tours</a></li>
+                    <select id="lang-selector" class="form-select form-select-sm lang-select-nav my-1 my-lg-0 me-lg-3" aria-label="Language Selector">
+                        <option value="en">EN</option>
+                        <option value="ru">RU</option>
+                        <option value="kz">KZ</option>
+                    </select>
+
+                    <ul class="navbar-nav gap-lg-1 mt-3 mt-lg-0" id="keyboard-nav-menu">
+                        <li class="nav-item"><a class="nav-link" href="index.html" data-i18n="navHome">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="history.html" data-i18n="navHistory">History & Culture</a></li>
+                        <li class="nav-item"><a class="nav-link" href="attractions.html" data-i18n="navAttractions">Attractions</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="tours.html" data-i18n="navTours">Tours</a></li>
                     </ul>
                 </div>
             </div>
@@ -50,13 +56,24 @@
             <div class="col-12 col-lg-8">
                 <!-- Header -->
                 <section class="p-4 p-md-5 mb-4 bg-white rounded-4 shadow-sm border">
-                    <h1 class="section-heading">Available Tour Packages</h1>
-                    <p class="mb-0">Explore Astana's futuristic skyline, historic avenues, and natural wonders. Review all tour packages and book your guide directly below.</p>
+                    <h1 class="section-heading" data-i18n="toursTitle">Available Tour Packages</h1>
+                    <p class="mb-0">Explore Astana's futuristic skyline, historic avenues, and natural wonders. Filter packages by category or book your guide below.</p>
                 </section>
 
-                <!-- Tour Table -->
+                <!-- Tour Table with Switch Statement Category Filter & Objects/Arrays Rendering -->
                 <section class="p-4 bg-white rounded-4 shadow-sm border mb-4">
-                    <h2 class="h4 mb-3">Tour Directory & Schedules</h2>
+                    <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3">
+                        <h2 class="h4 mb-0">Tour Directory & Schedules</h2>
+                        <div class="btn-group btn-group-sm" role="group" aria-label="Filter Tours by Category">
+                            <button type="button" class="btn btn-outline-primary tour-filter-btn active" data-category="all">All Tours</button>
+                            <button type="button" class="btn btn-outline-primary tour-filter-btn" data-category="city">City & Architecture</button>
+                            <button type="button" class="btn btn-outline-primary tour-filter-btn" data-category="night">Evening Skyline</button>
+                            <button type="button" class="btn btn-outline-primary tour-filter-btn" data-category="nature">Nature & Resort</button>
+                        </div>
+                    </div>
+
+                    <p id="tour-filter-summary" class="small text-muted mb-3"></p>
+
                     <div class="table-responsive">
                         <table class="table table-hover align-middle mb-0">
                             <thead class="table-dark">
@@ -68,10 +85,10 @@
                                     <th scope="col">Price</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody id="tour-table-body">
                                 <tr>
                                     <td>
-                                        <img src="images/astana-architecture.jpg" alt="Architecture Tour" class="rounded-circle shadow-sm" width="65" height="65" style="object-fit: cover;">
+                                        <img src="images/astana-architecture.jpg" alt="Architecture Tour" class="rounded-circle shadow-sm tour-avatar" width="65" height="65">
                                     </td>
                                     <td><strong>Astana Architecture</strong></td>
                                     <td>4 Hours</td>
@@ -80,7 +97,7 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <img src="images/tour-night.jpg" alt="Astana by Night" class="rounded-circle shadow-sm" width="65" height="65" style="object-fit: cover;">
+                                        <img src="images/tour-night.jpg" alt="Astana by Night" class="rounded-circle shadow-sm tour-avatar" width="65" height="65">
                                     </td>
                                     <td><strong>Astana by Night</strong></td>
                                     <td>2.5 Hours</td>
@@ -89,7 +106,7 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <img src="images/tour-burabay.jpg" alt="Burabay National Park" class="rounded-circle shadow-sm" width="65" height="65" style="object-fit: cover;">
+                                        <img src="images/tour-burabay.jpg" alt="Burabay National Park" class="rounded-circle shadow-sm tour-avatar" width="65" height="65">
                                     </td>
                                     <td><strong>Burabay Day Trip</strong></td>
                                     <td>9 Hours</td>
@@ -101,61 +118,78 @@
                     </div>
                 </section>
 
+                <!-- Multi-Step Booking Form (Callbacks & Reset Input Handler) -->
                 <section class="p-4 p-md-5 bg-white rounded-4 shadow-sm border">
-                    <h2 class="h4 mb-3">Book a Tour & Register Account</h2>
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h2 class="h4 mb-0">Book a Tour & Register Account</h2>
+                        <span id="step-indicator" class="badge bg-secondary">Step 1 of 2: Account Details</span>
+                    </div>
                     
                     <form id="booking-form">
-                        <div class="row g-3">
-                            <div class="col-12 col-md-6">
-                                <label for="user-name" class="form-label fw-semibold">Full Name *</label>
-                                <input type="text" class="form-control" id="user-name" placeholder="Name">
-                            </div>
-
-                            <div class="col-12 col-md-6">
-                                <label for="user-email" class="form-label fw-semibold">Email Address *</label>
-                                <input type="email" class="form-control" id="user-email" placeholder="name@example.com">
-                            </div>
-
-                            <div class="col-12 col-md-6">
-                                <label for="user-password" class="form-label fw-semibold">Create Password (min. 8 characters) *</label>
-                                <input type="password" class="form-control" id="user-password" placeholder="Enter password">
-                            </div>
-
-                            <div class="col-12 col-md-6">
-                                <label for="user-confirm-password" class="form-label fw-semibold">Confirm Password *</label>
-                                <input type="password" class="form-control" id="user-confirm-password" placeholder="Re-enter password">
-                            </div>
-
-                            <div class="col-12 col-md-6">
-                                <label for="tour-select" class="form-label fw-semibold">Select Tour</label>
-                                <select class="form-select" id="tour-select">
-                                    <option value="arch" selected>Astana Architecture</option>
-                                    <option value="night">Astana by Night</option>
-                                    <option value="burabay">Burabay Day Trip</option>
-                                </select>
-                            </div>
-
-                            <div class="col-12 col-md-6">
-                                <label class="form-label fw-semibold d-block">Preferred Time</label>
-                                <div class="form-check form-check-inline mt-2">
-                                    <input class="form-check-input" type="radio" name="tourTime" id="timeMorning" checked>
-                                    <label class="form-check-label" for="timeMorning">Morning (10:00 AM)</label>
+                        <!-- Step 1: Account & Personal Info -->
+                        <div id="form-step-1" class="form-step active-step">
+                            <div class="row g-3">
+                                <div class="col-12 col-md-6">
+                                    <label for="user-name" class="form-label fw-semibold">Full Name *</label>
+                                    <input type="text" class="form-control" id="user-name" placeholder="Name">
                                 </div>
-                                <div class="form-check form-check-inline mt-2">
-                                    <input class="form-check-input" type="radio" name="tourTime" id="timeEvening">
-                                    <label class="form-check-label" for="timeEvening">Evening (6:00 PM)</label>
+
+                                <div class="col-12 col-md-6">
+                                    <label for="user-email" class="form-label fw-semibold">Email Address *</label>
+                                    <input type="email" class="form-control" id="user-email" placeholder="name@example.com">
+                                </div>
+
+                                <div class="col-12 col-md-6">
+                                    <label for="user-password" class="form-label fw-semibold">Create Password (min. 8 characters) *</label>
+                                    <input type="password" class="form-control" id="user-password" placeholder="Enter password">
+                                </div>
+
+                                <div class="col-12 col-md-6">
+                                    <label for="user-confirm-password" class="form-label fw-semibold">Confirm Password *</label>
+                                    <input type="password" class="form-control" id="user-confirm-password" placeholder="Re-enter password">
+                                </div>
+
+                                <div class="col-12 pt-2">
+                                    <button type="button" id="next-step-btn" class="btn btn-primary px-4 py-2 me-2">Next: Tour Preferences &rarr;</button>
+                                    <button type="button" id="clear-form-btn" class="btn btn-outline-secondary px-3 py-2">Reset All Inputs</button>
                                 </div>
                             </div>
+                        </div>
 
-                            <div class="col-12">
-                                <p id="form-error-msg" class="text-danger fw-semibold m-0"></p>
-                                <p id="form-success-msg" class="text-success fw-semibold m-0"></p>
-                            </div>
+                        <!-- Step 2: Tour Selection -->
+                        <div id="form-step-2" class="form-step">
+                            <div class="row g-3">
+                                <div class="col-12 col-md-6">
+                                    <label for="tour-select" class="form-label fw-semibold">Select Tour</label>
+                                    <select class="form-select" id="tour-select">
+                                        <option value="arch" selected>Astana Architecture (12,000 KZT)</option>
+                                        <option value="night">Astana by Night (8,000 KZT)</option>
+                                        <option value="burabay">Burabay Day Trip (28,000 KZT)</option>
+                                    </select>
+                                </div>
 
-                            <div class="col-12 pt-2">
-                                <button type="submit" class="btn btn-primary px-4 py-2 me-2">Submit Booking</button>
-                                <button type="reset" class="btn btn-outline-secondary px-3 py-2">Reset</button>
+                                <div class="col-12 col-md-6">
+                                    <label class="form-label fw-semibold d-block">Preferred Time</label>
+                                    <div class="form-check form-check-inline mt-2">
+                                        <input class="form-check-input" type="radio" name="tourTime" id="timeMorning" checked>
+                                        <label class="form-check-label" for="timeMorning">Morning (10:00 AM)</label>
+                                    </div>
+                                    <div class="form-check form-check-inline mt-2">
+                                        <input class="form-check-input" type="radio" name="tourTime" id="timeEvening">
+                                        <label class="form-check-label" for="timeEvening">Evening (6:00 PM)</label>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 pt-2">
+                                    <button type="button" id="prev-step-btn" class="btn btn-outline-secondary px-3 py-2 me-2">&larr; Back</button>
+                                    <button type="submit" class="btn btn-primary px-4 py-2 me-2">Submit Booking</button>
+                                </div>
                             </div>
+                        </div>
+
+                        <div class="mt-3">
+                            <p id="form-error-msg" class="text-danger fw-semibold m-0"></p>
+                            <p id="form-success-msg" class="text-success fw-semibold m-0"></p>
                         </div>
                     </form>
                 </section>
@@ -190,7 +224,7 @@
         <div class="container">
             <p class="mb-1">Academic Group: <strong>SE-2503</strong></p>
             <p class="mb-1">Project Team Members: <strong>Akniyet Zhanarbek</strong>, <strong>Zhanserik Abilgali</strong></p>
-            <p class="mb-0 text-white-50"><small>&copy; Visit Astana - Assignment #4</small></p>
+            <p class="mb-0 text-white-50"><small>&copy; Visit Astana - Assignment #5</small></p>
         </div>
     </footer>
 

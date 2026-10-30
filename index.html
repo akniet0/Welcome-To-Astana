@@ -17,25 +17,32 @@
                 <a class="navbar-brand d-flex align-items-center gap-2 text-white" href="index.html">
                     <img src="images/astana-logo.svg" alt="Visit Astana Logo" class="logo-badge">
                     <div>
-                        <span class="h5 m-0 d-block text-white">Visit Astana</span>
-                        <small class="text-white-50">Heart of the Great Steppe</small>
+                        <span class="h5 m-0 d-block text-white" data-i18n="brandTitle">Visit Astana</span>
+                        <small class="text-white-50" data-i18n="brandSub">Heart of the Great Steppe</small>
                     </div>
                 </a>
                 
                 <button class="navbar-toggler border-white text-white" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon" style="filter: invert(1);"></span>
+                    <span class="navbar-toggler-icon navbar-toggler-inverted"></span>
                 </button>
                 
                 <div class="collapse navbar-collapse justify-content-end" id="mainNavbar">
-                    <span id="live-datetime" class="datetime-badge my-2 my-lg-0 me-lg-3">Loading date...</span>
+                    <span id="live-datetime" class="datetime-badge my-2 my-lg-0 me-lg-2">Loading date...</span>
                     
-                    <button id="change-bg-btn" class="btn btn-outline-light btn-sm my-2 my-lg-0 me-lg-3">Change Background</button>
+                    <button id="change-bg-btn" class="btn btn-outline-light btn-sm my-1 my-lg-0 me-lg-2" type="button" data-i18n="bgBtn">Change Background</button>
+                    <button id="theme-toggle-btn" class="btn btn-warning btn-sm my-1 my-lg-0 me-lg-2" type="button">🌙 Night Mode</button>
 
-                    <ul class="navbar-nav gap-lg-2 mt-3 mt-lg-0">
-                        <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="history.html">History & Culture</a></li>
-                        <li class="nav-item"><a class="nav-link" href="attractions.html">Attractions</a></li>
-                        <li class="nav-item"><a class="nav-link" href="tours.html">Tours</a></li>
+                    <select id="lang-selector" class="form-select form-select-sm lang-select-nav my-1 my-lg-0 me-lg-3" aria-label="Language Selector">
+                        <option value="en">EN</option>
+                        <option value="ru">RU</option>
+                        <option value="kz">KZ</option>
+                    </select>
+
+                    <ul class="navbar-nav gap-lg-1 mt-3 mt-lg-0" id="keyboard-nav-menu">
+                        <li class="nav-item"><a class="nav-link active" href="index.html" data-i18n="navHome">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="history.html" data-i18n="navHistory">History & Culture</a></li>
+                        <li class="nav-item"><a class="nav-link" href="attractions.html" data-i18n="navAttractions">Attractions</a></li>
+                        <li class="nav-item"><a class="nav-link" href="tours.html" data-i18n="navTours">Tours</a></li>
                     </ul>
                 </div>
             </div>
@@ -46,12 +53,39 @@
         <!-- Hero -->
         <section class="p-4 mb-5 bg-white rounded-4 shadow-sm border">
             <img src="images/welcome_to_Astana.jpg" alt="Welcome to Astana" class="hero-card-img shadow-sm mb-4">
-            <h1 class="display-6 fw-bold">Welcome to Astana</h1>
-            <p class="lead text-muted mb-3">Astana is a unique blend of futuristic architecture, rich nomadic heritage, and warm steppe hospitality.</p>
+            <span id="time-of-day-greeting" class="badge bg-success mb-2">Welcome Traveler!</span>
+            <h1 id="personalized-greeting" class="display-6 fw-bold" data-i18n="heroTitle">Welcome to Astana</h1>
+            <p class="lead text-muted mb-3" data-i18n="heroDesc">Astana is a unique blend of futuristic architecture, rich nomadic heritage, and warm steppe hospitality.</p>
+
+            <!-- Dynamic Greeting Input & Time Check Button -->
+            <div class="row g-2 align-items-center mb-3 pt-2 border-top">
+                <div class="col-12 col-sm-auto">
+                    <input type="text" id="visitor-name-input" class="form-control form-control-sm" placeholder="Enter your name for a custom greeting">
+                </div>
+                <div class="col-12 col-sm-auto">
+                    <button id="update-greeting-btn" class="btn btn-primary btn-sm" type="button">Greet Me</button>
+                    <button id="show-time-btn" class="btn btn-outline-secondary btn-sm ms-1" type="button">Check Local Time</button>
+                </div>
+                <div class="col-12 col-sm-auto">
+                    <span id="clicked-time-output" class="small fw-semibold text-success"></span>
+                </div>
+            </div>
+
             <div class="btn-group hero-btn-group mt-2" role="group" aria-label="Quick Navigation">
-                <a href="attractions.html" class="btn btn-primary btn-sm">View Landmarks</a>
-                <a href="tours.html" class="btn btn-outline-secondary btn-sm">Book a Tour</a>
-                <button id="open-popup-btn" class="btn btn-outline-primary btn-sm">Contact Support</button>
+                <a href="attractions.html" class="btn btn-primary btn-sm" data-i18n="btnLandmarks">View Landmarks</a>
+                <a href="tours.html" class="btn btn-outline-secondary btn-sm" data-i18n="btnBookTour">Book a Tour</a>
+                <button id="open-popup-btn" class="btn btn-outline-primary btn-sm" type="button" data-i18n="btnSupport">Contact Support</button>
+            </div>
+        </section>
+
+        <!-- Dynamic Random Fact Box (DOM Selection & Content Modification) -->
+        <section class="p-4 mb-5 bg-white rounded-4 shadow-sm border">
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3">
+                <div>
+                    <h2 class="h5 mb-1" data-i18n="factHeading">Did You Know? Astana Cultural & Architecture Facts</h2>
+                    <p id="astana-fact-box" class="text-muted mb-0">Baiterek Tower stands at 97 meters to the observation deck, symbolizing 1997—the year Astana became the capital of Kazakhstan.</p>
+                </div>
+                <button id="new-fact-btn" class="btn btn-primary btn-sm align-self-start align-self-md-center flex-shrink-0" type="button">Discover Random Fact</button>
             </div>
         </section>
 
@@ -150,6 +184,7 @@
             </div>
         </section>
 
+        <!-- Featured Highlights -->
         <section class="mb-5">
             <h2 class="section-heading">Featured Highlights</h2>
             <div class="row g-4">
@@ -188,6 +223,7 @@
             </div>
         </section>
 
+        <!-- FAQ Accordion -->
         <section class="p-4 p-md-5 bg-white rounded-4 shadow-sm border mb-4">
             <h2 class="section-heading">Frequently Asked Questions</h2>
             <p class="text-muted">Click any question to view details:</p>
@@ -209,23 +245,25 @@
         </section>
     </main>
 
+    <!-- Contact Support Modal (Async Callback Form) -->
     <div id="popup-modal" class="modal-overlay">
         <div class="modal-content-box">
-            <button id="close-popup-btn" class="close-btn">&times;</button>
+            <button id="close-popup-btn" class="close-btn" type="button">&times;</button>
             <h3 class="h5 mb-3">Contact Visitor Helpdesk</h3>
             <form id="popup-form">
                 <div class="mb-3">
-                    <label class="form-label small fw-semibold">Your Name</label>
-                    <input type="text" class="form-control" required placeholder="Enter name">
+                    <label class="form-label small fw-semibold" for="support-name">Your Name</label>
+                    <input type="text" id="support-name" class="form-control" required placeholder="Enter name">
                 </div>
                 <div class="mb-3">
-                    <label class="form-label small fw-semibold">Your Email</label>
-                    <input type="email" class="form-control" required placeholder="Enter email">
+                    <label class="form-label small fw-semibold" for="support-email">Your Email</label>
+                    <input type="email" id="support-email" class="form-control" required placeholder="Enter email">
                 </div>
                 <div class="mb-3">
-                    <label class="form-label small fw-semibold">Message</label>
-                    <textarea class="form-control" rows="3" required placeholder="Ask a question..."></textarea>
+                    <label class="form-label small fw-semibold" for="support-msg">Message</label>
+                    <textarea id="support-msg" class="form-control" rows="3" required placeholder="Ask a question..."></textarea>
                 </div>
+                <p id="popup-callback-status" class="small fw-semibold text-success mb-2"></p>
                 <button type="submit" class="btn btn-primary w-100">Send Inquiry</button>
             </form>
         </div>
@@ -235,7 +273,7 @@
         <div class="container">
             <p class="mb-1">Academic Group: <strong>SE-2503</strong></p>
             <p class="mb-1">Project Team Members: <strong>Akniyet Zhanarbek</strong>, <strong>Zhanserik Abilgali</strong></p>
-            <p class="mb-0 text-white-50"><small>&copy; Visit Astana - Assignment #4</small></p>
+            <p class="mb-0 text-white-50"><small>&copy; Visit Astana - Assignment #5</small></p>
         </div>
     </footer>
 
