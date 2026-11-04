@@ -392,7 +392,32 @@ const fullPageTextMap = {
     "Included Amenities": { ru: "Что включено в тур", kz: "Турға не кіреді" },
     "Bottled mineral water": { ru: "Бутилированная вода", kz: "Бөтелкедегі ауыз су" },
     "Museum admission tickets": { ru: "Входные билеты в музеи", kz: "Музей билеттері" },
-    "Certified local guide": { ru: "Сертифицированный местный гид", kz: "Сертификатталған жергілікті гид" }
+    "Certified local guide": { ru: "Сертифицированный местный гид", kz: "Сертификатталған жергілікті гид" },
+
+    // Assignment 6 additions
+    "Astana in Numbers": { ru: "Астана в цифрах", kz: "Астана сандармен" },
+    "Year Akmola fortress was founded": { ru: "Год основания крепости Акмола", kz: "Ақмола бекінісі құрылған жыл" },
+    "Residents call Astana home": { ru: "Жителей называют Астану домом", kz: "Тұрғын Астананы үйім дейді" },
+    "Height of Baiterek's observation deck": { ru: "Высота смотровой площадки Байтерека", kz: "Бәйтерек көру алаңының биіктігі" },
+    "Worshippers fit in Hazret Sultan": { ru: "Верующих вмещает Хазрет Султан", kz: "Әзірет Сұлтан сыйдыратын адам саны" },
+    "How cold does Astana get in winter?": { ru: "Насколько холодно в Астане зимой?", kz: "Астанада қыста қаншалықты суық болады?" },
+    "Winter temperatures often drop below -25°C with strong steppe winds. Pack a warm coat, hat, and gloves, and plan indoor stops like Khan Shatyr.": {
+        ru: "Зимой температура часто опускается ниже -25°C, дуют сильные степные ветры. Возьмите теплую куртку, шапку и перчатки и планируйте остановки в помещениях, например в Хан Шатыре.",
+        kz: "Қыста температура жиі -25°C-тан төмен түсіп, қатты дала желі соғады. Жылы күрте, бас киім мен қолғап алып, Хан Шатыр сияқты жабық орындарға аялдауды жоспарлаңыз."
+    },
+    "Which currency should I use in Astana?": { ru: "Какой валютой пользоваться в Астане?", kz: "Астанада қандай валюта қолданылады?" },
+    "The local currency is the Kazakhstani tenge (KZT). Bank cards and QR payments work almost everywhere, including taxis and buses.": {
+        ru: "Местная валюта — казахстанский тенге (KZT). Банковские карты и QR-оплата работают почти везде, включая такси и автобусы.",
+        kz: "Жергілікті валюта — қазақстандық теңге (KZT). Банк карталары мен QR төлемі барлық жерде, соның ішінде такси мен автобустарда қабылданады."
+    },
+    "How do I get from the airport to the city center?": { ru: "Как добраться из аэропорта в центр города?", kz: "Әуежайдан қала орталығына қалай жетуге болады?" },
+    "Take bus 10 or 12, or order a taxi through an app. The ride to Baiterek Tower takes about 25 minutes.": {
+        ru: "Сядьте на автобус №10 или №12 либо закажите такси через приложение. Дорога до Байтерека занимает около 25 минут.",
+        kz: "№10 немесе №12 автобусқа отырыңыз не қосымша арқылы такси шақырыңыз. Бәйтерекке дейін шамамен 25 минут жүресіз."
+    },
+    "Find a Landmark": { ru: "Найти достопримечательность", kz: "Көрікті жерді табу" },
+    "Speak Like a Local": { ru: "Говорите как местный", kz: "Жергілікті тұрғындай сөйлеңіз" },
+    "Emergency & Useful Numbers": { ru: "Экстренные и полезные номера", kz: "Шұғыл және пайдалы нөмірлер" }
 };
 
 const placeholderMap = {
@@ -402,7 +427,9 @@ const placeholderMap = {
     "Ask a question...": { ru: "Задайте вопрос...", kz: "Сұрағыңызды жазыңыз..." },
     "Name": { ru: "Имя", kz: "Аты-жөніңіз" },
     "Enter password": { ru: "Введите пароль", kz: "Құпиясөзді енгізіңіз" },
-    "Re-enter password": { ru: "Повторите пароль", kz: "Құпиясөзді қайталаңыз" }
+    "Re-enter password": { ru: "Повторите пароль", kz: "Құпиясөзді қайталаңыз" },
+    "Search the FAQ (e.g. bus, weather, English)": { ru: "Поиск по вопросам (например: автобус, погода)", kz: "Сұрақтардан іздеу (мысалы: автобус, ауа райы)" },
+    "Search landmarks, e.g. Baiterek, museum, park": { ru: "Поиск: Байтерек, музей, парк...", kz: "Іздеу: Бәйтерек, мұражай, саябақ..." }
 };
 
 
@@ -710,7 +737,8 @@ if (galleryFeaturedImg && galleryThumbs.length > 0) {
     galleryThumbs.forEach(function (thumb) {
         thumb.addEventListener("click", function () {
             playUiSound("click");
-            const newSrc = thumb.getAttribute("src");
+            // data-src holds the real path while the thumbnail is lazy-loaded (Assignment 6, Task 9)
+            const newSrc = thumb.getAttribute("data-src") || thumb.getAttribute("src");
             const newAlt = thumb.getAttribute("alt");
 
             galleryFeaturedImg.setAttribute("src", newSrc);
@@ -996,24 +1024,40 @@ const bookingForm = document.getElementById("booking-form");
 if (bookingForm) {
     bookingForm.addEventListener("submit", function (e) {
         e.preventDefault();
-        playUiSound("success");
 
         const name = document.getElementById("user-name");
         const tourSelect = document.getElementById("tour-select");
         const errorMsg = document.getElementById("form-error-msg");
         const successMsg = document.getElementById("form-success-msg");
+        const $submitBtn = $("#booking-submit-btn");
+
+        // Assignment 6 / Task 6: ignore repeated clicks while the "server" is working
+        if ($submitBtn.prop("disabled")) return;
 
         errorMsg.textContent = "";
-        const selectedOptionText = tourSelect.options[tourSelect.selectedIndex].text;
-        if (currentLang === "ru") {
-            successMsg.textContent = `Бронирование подтверждено для ${name.value}! Тур: ${selectedOptionText}.`;
-        } else if (currentLang === "kz") {
-            successMsg.textContent = `${name.value} үшін тапсырыс расталды! Тур: ${selectedOptionText}.`;
-        } else {
-            successMsg.textContent = `Booking confirmed for ${name.value}! Package: ${selectedOptionText}.`;
-        }
+        successMsg.textContent = "";
+        setButtonLoading($submitBtn, true);
 
-        animateElementPop(successMsg);
+        // Simulated server call (2 seconds)
+        setTimeout(function () {
+            setButtonLoading($submitBtn, false);
+            playUiSound("success");
+
+            const selectedOptionText = tourSelect.options[tourSelect.selectedIndex].text;
+            let message;
+            if (currentLang === "ru") {
+                message = `Бронирование подтверждено для ${name.value}! Тур: ${selectedOptionText}.`;
+            } else if (currentLang === "kz") {
+                message = `${name.value} үшін тапсырыс расталды! Тур: ${selectedOptionText}.`;
+            } else {
+                message = `Booking confirmed for ${name.value}! Package: ${selectedOptionText}.`;
+            }
+            successMsg.textContent = message;
+            animateElementPop(successMsg);
+
+            // Assignment 6 / Task 7: toast notification
+            showToast(message, "success");
+        }, 2000);
     });
 }
 
@@ -1032,7 +1076,7 @@ function submitInquiryAsync(formData, onCompleteCallback) {
         } else {
             onCompleteCallback("Thank you, " + formData.name + "! Your inquiry was received.");
         }
-    }, 400);
+    }, 1800); // simulated server delay (shows the Task 6 spinner)
 }
 
 if (openModalBtn && popupModal) {
@@ -1088,12 +1132,21 @@ if (openModalBtn && popupModal) {
                 return;
             }
 
+            // Assignment 6 / Task 6: spinner + disabled button while "sending"
+            const $sendBtn = $("#popup-submit-btn");
+            if ($sendBtn.prop("disabled")) return;
+            if (popupCallbackStatus) popupCallbackStatus.textContent = "";
+            setButtonLoading($sendBtn, true);
+
             submitInquiryAsync({ name: supportName }, function (responseMessage) {
+                setButtonLoading($sendBtn, false);
                 playUiSound("success");
                 if (popupCallbackStatus) {
                     popupCallbackStatus.className = "small fw-semibold text-success mb-2";
                     popupCallbackStatus.textContent = responseMessage;
                 }
+                // Assignment 6 / Task 7: toast notification
+                showToast(responseMessage, "success");
                 setTimeout(function () {
                     popupForm.reset();
                     if (popupCallbackStatus) popupCallbackStatus.textContent = "";
@@ -1123,6 +1176,10 @@ accordionQuestions.forEach(function (button) {
 
 function switchSiteLanguage(langCode) {
     let selectedDictionary;
+
+    // Assignment 6: remove <mark> highlights first, otherwise highlighted
+    // elements are no longer "leaf" elements and would be skipped below.
+    clearSearchHighlights($("body"));
 
     // Required Switch Statement for language selection
     switch (langCode) {
@@ -1204,3 +1261,495 @@ if (langSelector) {
 } else {
     switchSiteLanguage(currentLang);
 }
+
+/* =====================================================================
+   ASSIGNMENT 6 — jQuery
+   ---------------------------------------------------------------------
+   The helpers below are declared at the top level (not inside ready)
+   so the older vanilla-JS code above can call them too.
+   ===================================================================== */
+
+// Small translation table for the text that jQuery generates
+const jqText = {
+    en: { wait: "Please wait…", copied: "Copied to clipboard!", copyFail: "Could not copy. Please select the text manually.", rated: "Thanks! You rated", shown: "Showing", of: "of", landmarks: "landmarks", noMatch: "No matches found", matches: "matches", match: "match", inQuestions: "in", questions: "questions", question: "question" },
+    ru: { wait: "Пожалуйста, подождите…", copied: "Скопировано в буфер обмена!", copyFail: "Не удалось скопировать. Выделите текст вручную.", rated: "Спасибо! Ваша оценка", shown: "Показано", of: "из", landmarks: "мест", noMatch: "Совпадений нет", matches: "совпадений", match: "совпадение", inQuestions: "в", questions: "вопросах", question: "вопросе" },
+    kz: { wait: "Күте тұрыңыз…", copied: "Алмасу буферіне көшірілді!", copyFail: "Көшіру мүмкін болмады. Мәтінді қолмен белгілеңіз.", rated: "Рақмет! Сіздің бағаңыз", shown: "Көрсетілді", of: "/", landmarks: "орын", noMatch: "Сәйкестік табылмады", matches: "сәйкестік", match: "сәйкестік", inQuestions: "", questions: "сұрақта", question: "сұрақта" }
+};
+function t(key) {
+    return (jqText[currentLang] || jqText.en)[key];
+}
+
+/* ---------- Task 7: Notification system (toasts that fade out) ---------- */
+function showToast(message, type) {
+    type = type || "success";
+    const icons = { success: "✓", info: "i", warning: "!", error: "×" };
+
+    // Create the container once, the first time a toast is shown
+    let $stack = $("#toast-stack");
+    if ($stack.length === 0) {
+        $stack = $('<div id="toast-stack" class="toast-stack" aria-live="polite"></div>').appendTo("body");
+    }
+
+    const $toast = $('<div class="site-toast" role="status"></div>').addClass("toast-" + type);
+    $('<span class="toast-icon"></span>').text(icons[type] || icons.info).appendTo($toast);
+    $('<span class="toast-text"></span>').text(message).appendTo($toast); // .text() = safe from HTML injection
+    $('<button type="button" class="toast-close" aria-label="Close">&times;</button>').appendTo($toast);
+    $('<span class="toast-timer"></span>').appendTo($toast);
+
+    $toast.hide().appendTo($stack).fadeIn(250);
+
+    // Auto-hide after 3.5 s: fade out, then remove from the DOM
+    const hideTimer = setTimeout(function () {
+        $toast.fadeOut(500, function () { $(this).remove(); });
+    }, 3500);
+
+    $toast.find(".toast-close").on("click", function () {
+        clearTimeout(hideTimer);
+        $toast.stop(true).fadeOut(200, function () { $(this).remove(); });
+    });
+}
+
+/* ---------- Task 6: Loading spinner on a submit button ---------- */
+function setButtonLoading($btn, isLoading) {
+    if (!$btn || $btn.length === 0) return;
+
+    if (isLoading) {
+        $btn.data("original-html", $btn.html())            // remember the old label
+            .prop("disabled", true)                         // block repeated clicks
+            .addClass("is-loading")
+            .attr("aria-busy", "true")
+            .html('<span class="btn-spinner" aria-hidden="true"></span> ' + t("wait"));
+    } else {
+        $btn.html($btn.data("original-html"))
+            .prop("disabled", false)
+            .removeClass("is-loading")
+            .removeAttr("aria-busy");
+    }
+}
+
+/* ---------- Task 3: Search highlighting helpers ---------- */
+function escapeRegExp(text) {
+    return text.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
+// Removes every <mark class="search-hit"> inside $scope and joins the text back together
+function clearSearchHighlights($scope) {
+    $scope.find("mark.search-hit").each(function () {
+        const parent = this.parentNode;
+        $(this).contents().unwrap();   // the opposite of .wrap(): keep the text, drop the <mark>
+        parent.normalize();             // merge the split text nodes back into one
+    });
+}
+
+// Wraps every match of `keyword` inside $elements with <mark class="search-hit">.
+// Returns the number of matches. Works on text nodes only, so existing tags stay intact.
+function highlightKeyword($elements, keyword) {
+    clearSearchHighlights($elements);
+    keyword = String(keyword).trim();
+    if (keyword === "") return 0;
+
+    const regex = new RegExp("(" + escapeRegExp(keyword) + ")", "gi"); // used to split the text
+    const testRegex = new RegExp(escapeRegExp(keyword), "i");             // non-global: .test() has no state
+    let total = 0;
+
+    $elements.each(function () {
+        // collect the text nodes of this element (nodeType 3 = text)
+        const textNodes = $(this).find("*").addBack().contents().filter(function () {
+            return this.nodeType === 3 && testRegex.test(this.nodeValue);
+        });
+
+        textNodes.each(function () {
+            const parts = this.nodeValue.split(regex); // odd indexes are the matches
+            const $pieces = $.map(parts, function (part, i) {
+                if (part === "") return null;
+                if (i % 2 === 1) {
+                    total++;
+                    return $('<mark class="search-hit"></mark>').text(part)[0];
+                }
+                return document.createTextNode(part);
+            });
+            $(this).replaceWith($pieces);
+        });
+    });
+    return total;
+}
+
+
+$(document).ready(function () {
+    // ---------- Task 0: Setup check ----------
+    console.log("jQuery is ready!");
+
+    const $window = $(window);
+    const $document = $(document);
+
+    /* ================================================================
+       Task 4: Colorful and stylized scroll progress bar
+       ================================================================ */
+    const $progress = $(
+        '<div id="scroll-progress" aria-hidden="true">' +
+            '<div class="scroll-progress-fill"><span class="scroll-progress-glow"></span></div>' +
+        '</div>' +
+        '<div id="scroll-percent" class="scroll-percent" aria-hidden="true">0%</div>'
+    );
+    $("body").prepend($progress);
+
+    const $fill = $("#scroll-progress .scroll-progress-fill");
+    const $percent = $("#scroll-percent");
+
+    function updateScrollProgress() {
+        const scrollTop = $window.scrollTop();
+        const maxScroll = $document.height() - $window.height();
+        const percent = maxScroll > 0 ? Math.min(100, Math.round((scrollTop / maxScroll) * 100)) : 0;
+
+        $fill.css("width", percent + "%");
+        $percent.text(percent + "%").toggleClass("visible", scrollTop > 80);
+        $percent.toggleClass("done", percent >= 100);
+    }
+
+    // Clicking the badge scrolls smoothly back to the top
+    $percent.on("click", function () {
+        $("html, body").animate({ scrollTop: 0 }, 600);
+    });
+
+    /* ================================================================
+       Task 5: Animated number counter (starts when visible)
+       ================================================================ */
+    const $counters = $(".counter");
+
+    function formatCounter($el, value) {
+        return $el.data("format") === "comma" ? Math.round(value).toLocaleString("en-US") : Math.round(value);
+    }
+
+    function isInViewport($el, offset) {
+        const top = $el.offset().top;
+        const bottom = top + $el.outerHeight();
+        const viewTop = $window.scrollTop();
+        const viewBottom = viewTop + $window.height();
+        return bottom > viewTop - (offset || 0) && top < viewBottom + (offset || 0);
+    }
+
+    function runCounters() {
+        $counters.each(function () {
+            const $el = $(this);
+            if ($el.data("counted") || !isInViewport($el, -40)) return;
+            $el.data("counted", true);
+
+            // jQuery .animate() can tween any number on a plain object
+            $({ value: 0 }).animate({ value: Number($el.data("target")) }, {
+                duration: 2200,
+                easing: "swing",
+                step: function (now) {
+                    $el.text(formatCounter($el, now));
+                },
+                complete: function () {
+                    $el.text(formatCounter($el, $el.data("target")));
+                    $el.closest(".stat-card").addClass("counted");
+                }
+            });
+        });
+    }
+
+    /* ================================================================
+       Task 9: Image lazy loading (scroll + offset + attr('src'))
+       ================================================================ */
+    function loadImage($img) {
+        const realSrc = $img.attr("data-src");
+        if (!realSrc || $img.hasClass("lazy-loaded")) return;
+
+        $img.addClass("lazy-loading");
+        $img.one("load", function () {
+            $img.removeClass("lazy-loading").addClass("lazy-loaded");
+        });
+        $img.attr("src", realSrc);
+    }
+
+    function lazyLoadImages() {
+        const preload = 200; // start loading 200px before the image appears
+        const viewTop = $window.scrollTop();
+        const viewBottom = viewTop + $window.height();
+
+        $("img.lazy").not(".lazy-loaded, .lazy-loading").each(function () {
+            const $img = $(this);
+            const top = $img.offset().top;
+            const bottom = top + $img.outerHeight();
+            if (bottom >= viewTop - preload && top <= viewBottom + preload) {
+                loadImage($img);
+            }
+        });
+    }
+
+    // Carousel slides are hidden (display:none) until shown, so offset() can't be
+    // used for them. Instead we load a slide right before Bootstrap shows it.
+    $("#astanaCarousel").on("slide.bs.carousel", function (e) {
+        const $slides = $(this).find(".carousel-item");
+        const nextIndex = e.to;
+        loadImage($slides.eq(nextIndex).find("img.lazy-slide"));
+        loadImage($slides.eq((nextIndex + 1) % $slides.length).find("img.lazy-slide")); // preload one more
+    });
+    // Preload the second slide once the page has finished loading
+    $window.on("load", function () {
+        loadImage($("#astanaCarousel .carousel-item").eq(1).find("img.lazy-slide"));
+    });
+
+    /* ---- One throttled scroll/resize handler drives Tasks 4, 5 and 9 ---- */
+    let ticking = false;
+    function onScroll() {
+        if (ticking) return;
+        ticking = true;
+        window.requestAnimationFrame(function () {
+            updateScrollProgress();
+            runCounters();
+            lazyLoadImages();
+            ticking = false;
+        });
+    }
+    $window.on("scroll resize", onScroll);
+    onScroll();
+
+    /* ================================================================
+       Task 1: Real-time search and live filter (attractions.html)
+       ================================================================ */
+    const $landmarkSearch = $("#landmark-search");
+    const $landmarkItems = $("#landmark-list .landmark-item");
+    const $landmarkCount = $("#landmark-count");
+    const $landmarkEmpty = $("#landmark-empty");
+    const $suggestions = $("#autocomplete-list");
+
+    function filterLandmarks(query) {
+        query = String(query).trim().toLowerCase();
+
+        // .filter() returns only the items whose text (or keywords) contain the query
+        const $matches = $landmarkItems.filter(function () {
+            const haystack = ($(this).text() + " " + $(this).data("keywords")).toLowerCase();
+            return haystack.indexOf(query) !== -1;
+        });
+
+        $landmarkItems.not($matches).stop(true, true).slideUp(150);
+        $matches.stop(true, true).slideDown(150);
+
+        // Re-use the Task 3 highlighter to show WHY each item matched
+        highlightKeyword($landmarkItems.find(".landmark-name, .landmark-desc, .landmark-badge, .landmark-district"), query);
+
+        $landmarkCount.text(t("shown") + " " + $matches.length + " " + t("of") + " " + $landmarkItems.length + " " + t("landmarks"));
+        $landmarkEmpty.toggle($matches.length === 0);
+    }
+
+    /* ================================================================
+       Task 2: Autocomplete search suggestions (dropdown)
+       ================================================================ */
+    const landmarkNames = $landmarkItems.map(function () {
+        return {
+            name: $(this).find(".landmark-name").text(),
+            category: $(this).data("category"),
+            keywords: String($(this).data("keywords"))
+        };
+    }).get();
+    let activeSuggestion = -1;
+
+    function closeSuggestions() {
+        $suggestions.empty().removeClass("open");
+        $landmarkSearch.attr("aria-expanded", "false");
+        activeSuggestion = -1;
+    }
+
+    function showSuggestions(query) {
+        query = String(query).trim().toLowerCase();
+        $suggestions.empty();
+        activeSuggestion = -1;
+        if (query.length === 0) {
+            closeSuggestions();
+            return;
+        }
+
+        // Names that START with the query come first, then names that only contain it
+        const starts = [];
+        const contains = [];
+        $.each(landmarkNames, function (_, item) {
+            const name = item.name.toLowerCase();
+            if (name.indexOf(query) === 0) starts.push(item);
+            else if (name.indexOf(query) !== -1 || item.category.toLowerCase().indexOf(query) !== -1 || item.keywords.indexOf(query) !== -1) contains.push(item);
+        });
+        const results = starts.concat(contains).slice(0, 6);
+
+        if (results.length === 0) {
+            $('<li class="autocomplete-empty"></li>').text(t("noMatch")).appendTo($suggestions);
+        } else {
+            $.each(results, function (_, item) {
+                const $li = $('<li class="autocomplete-item" role="option"></li>').attr("data-name", item.name);
+                const $name = $('<span class="autocomplete-name"></span>').text(item.name);
+                highlightKeyword($name, query);   // bold the typed part
+                $li.append($name).append($('<span class="autocomplete-cat"></span>').text(item.category));
+                $suggestions.append($li);
+            });
+        }
+        $suggestions.addClass("open");
+        $landmarkSearch.attr("aria-expanded", "true");
+    }
+
+    function chooseSuggestion(name) {
+        $landmarkSearch.val(name);
+        closeSuggestions();
+        filterLandmarks(name);
+
+        // Scroll to the chosen landmark and flash it
+        const $target = $landmarkItems.filter(function () {
+            return $(this).find(".landmark-name").text() === name;
+        }).first();
+        if ($target.length) {
+            $("html, body").animate({ scrollTop: $target.offset().top - 160 }, 400);
+            $target.addClass("flash");
+            setTimeout(function () { $target.removeClass("flash"); }, 1200);
+        }
+    }
+
+    function moveActive(direction) {
+        const $items = $suggestions.find(".autocomplete-item");
+        if ($items.length === 0) return;
+        activeSuggestion = (activeSuggestion + direction + $items.length) % $items.length;
+        $items.removeClass("active").eq(activeSuggestion).addClass("active");
+    }
+
+    if ($landmarkSearch.length) {
+        // keyup fires after every typed character (as suggested in the task hint).
+        // "input" also covers paste, mobile keyboards and the ✕ clear button.
+        let lastQuery = null;
+        $landmarkSearch.on("keyup input", function (e) {
+            if (["ArrowDown", "ArrowUp", "Enter", "Escape"].includes(e.key)) return;
+            const query = $(this).val();
+            if (query === lastQuery) return; // keyup + input for the same character → run once
+            lastQuery = query;
+            filterLandmarks(query);
+            showSuggestions(query);
+        });
+
+        // Keyboard navigation inside the dropdown
+        $landmarkSearch.on("keydown", function (e) {
+            if (e.key === "ArrowDown") { e.preventDefault(); moveActive(1); }
+            else if (e.key === "ArrowUp") { e.preventDefault(); moveActive(-1); }
+            else if (e.key === "Escape") { closeSuggestions(); }
+            else if (e.key === "Enter") {
+                e.preventDefault();
+                const $active = $suggestions.find(".autocomplete-item.active");
+                if ($active.length) chooseSuggestion($active.data("name"));
+                else closeSuggestions();
+            }
+        });
+
+        // Event delegation: the <li> items are created dynamically
+        $suggestions.on("mousedown", ".autocomplete-item", function (e) {
+            e.preventDefault(); // keep focus in the input
+            chooseSuggestion($(this).data("name"));
+        });
+
+        // Close the dropdown when clicking anywhere else
+        $document.on("click", function (e) {
+            if (!$(e.target).closest(".search-wrapper").length) closeSuggestions();
+        });
+
+        filterLandmarks("");
+    }
+
+    /* ================================================================
+       Task 3: Search highlighting in the FAQ (index.html)
+       ================================================================ */
+    const $faqSearch = $("#faq-search");
+    const $faqItems = $("#faq-section .accordion-item-simple");
+    const $faqStatus = $("#faq-search-status");
+
+    function searchFaq() {
+        const query = String($faqSearch.val()).trim();
+        const count = highlightKeyword($faqItems.find(".accordion-question, .accordion-answer"), query);
+
+        if (query === "") {
+            $faqItems.removeClass("faq-dim").find(".accordion-answer").removeClass("open");
+            $faqStatus.text("");
+            return;
+        }
+
+        let questionsWithHits = 0;
+        $faqItems.each(function () {
+            const hasHit = $(this).find("mark.search-hit").length > 0;
+            if (hasHit) questionsWithHits++;
+            $(this).toggleClass("faq-dim", !hasHit);
+            $(this).find(".accordion-answer").toggleClass("open", hasHit); // open matching answers
+        });
+
+        if (count === 0) {
+            $faqStatus.text(t("noMatch"));
+        } else {
+            $faqStatus.text(count + " " + (count === 1 ? t("match") : t("matches")) + " " + t("inQuestions") + " " +
+                questionsWithHits + " " + (questionsWithHits === 1 ? t("question") : t("questions")));
+        }
+    }
+
+    if ($faqSearch.length) {
+        $faqSearch.on("keyup search input", searchFaq);
+    }
+
+    // After the language switcher rewrites the page text, re-apply the active searches
+    $("#lang-selector").on("change", function () {
+        if ($faqSearch.length) searchFaq();
+        if ($landmarkSearch.length) filterLandmarks($landmarkSearch.val());
+    });
+
+    /* ================================================================
+       Task 8: Copy to clipboard button
+       ================================================================ */
+    let copyFromButton = null; // the text to copy while our own copy event is running
+
+    // .on("copy") — runs for every copy on the page. When the copy was started by
+    // one of our buttons we put the snippet text into the clipboard ourselves.
+    $document.on("copy", function (e) {
+        if (copyFromButton !== null) {
+            e.originalEvent.clipboardData.setData("text/plain", copyFromButton);
+            e.preventDefault();
+        }
+    });
+
+    // When a visitor selects a snippet manually and presses Ctrl+C, confirm it too
+    $(".snippet-text").on("copy", function () {
+        showToast(t("copied"), "info");
+    });
+
+    function copyText(text) {
+        // Modern Clipboard API (needs HTTPS — GitHub Pages is HTTPS)
+        if (navigator.clipboard && window.isSecureContext) {
+            return navigator.clipboard.writeText(text);
+        }
+        // Fallback: trigger a real "copy" event that our .on("copy") handler fills in
+        return new Promise(function (resolve, reject) {
+            copyFromButton = text;
+            const ok = document.execCommand("copy");
+            copyFromButton = null;
+            ok ? resolve() : reject();
+        });
+    }
+
+    $(".copy-btn").on("click", function () {
+        const $btn = $(this);
+        const text = $btn.closest(".snippet").find(".snippet-text").text();
+
+        copyText(text).then(function () {
+            $btn.find(".copy-tooltip").text(t("copied"));
+            $btn.addClass("copied");                      // CSS swaps the icon to a ✓ and shows the tooltip
+            $btn.find(".copy-label").text("Copied");
+            showToast(t("copied") + " — " + text, "success");
+            clearTimeout($btn.data("timer"));
+            $btn.data("timer", setTimeout(function () {
+                $btn.removeClass("copied");
+                $btn.find(".copy-label").text("Copy");
+            }, 2000));
+        }).catch(function () {
+            showToast(t("copyFail"), "error");
+        });
+    });
+
+    /* ================================================================
+       Task 7 (extra): toasts for other user actions
+       ================================================================ */
+    $(".star-rating .rating-star").on("click", function () {
+        const landmark = $(this).closest(".star-rating").data("landmark");
+        const stars = $(this).data("value");
+        showToast(t("rated") + " " + landmark + " " + "★".repeat(stars), "success");
+    });
+});

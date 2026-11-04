@@ -3,7 +3,7 @@
 A responsive tourism web application highlighting the culture, modern architecture, and travel itineraries of Astana, Kazakhstan.
 
 ## Live Site
-[Visit Astana on GitHub Pages](https://<your-username>.github.io/<your-repo-name>/)
+[Visit Astana on GitHub Pages](https://akniet0.github.io/Welcome-To-Astana/)
 
 ## Team Members & Page Breakdown
 * **Akniyet Zhanarbek:** 
@@ -24,3 +24,18 @@ Tested across:
 * **Mobile (<576px):** Collapsed navigation menu, stacked action buttons, single-column cards
 * **Tablet (576px - 991px):** Two-column card layouts, responsive tour tables with horizontal scroll safeguards
 * **Desktop (≥992px):** Three-column card grids, two-column content/sidebar arrangements
+
+## Assignment 6 — jQuery Features
+jQuery 4.0.0 is loaded from the official CDN in every page's `<head>`; all jQuery code lives in `js/script.js` inside `$(document).ready()` (logs `jQuery is ready!`).
+
+| # | Feature | Where | Key jQuery methods |
+|---|---------|-------|--------------------|
+| 1 | Real-time search & live filter of 14 landmarks | `attractions.html` → *Find a Landmark* | `.on('keyup input')`, `.filter()`, `.slideUp()/.slideDown()` |
+| 2 | Autocomplete dropdown (mouse + ↑ ↓ Enter Esc) | `attractions.html` | `$.each()`, `.append()`, event delegation `.on('mousedown', '.autocomplete-item')` |
+| 3 | Search highlighting in the FAQ (matching answers auto-open) | `index.html` → FAQ | RegExp, `.contents().filter()`, `.replaceWith()`, `.unwrap()` |
+| 4 | Gradient scroll progress bar + % badge (click → back to top) | all pages | `$(window).scrollTop()`, `$(document).height()`, `.css()`, `.animate()` |
+| 5 | Animated number counter (starts when visible) | `index.html` → *Astana in Numbers* | `$({value:0}).animate({...}, {step})`, `.offset()` |
+| 6 | Spinner + "Please wait…" + disabled submit button | Contact modal (`index.html`), booking form (`tours.html`) | `.prop('disabled')`, `.html()`, `.data()` |
+| 7 | Toast notifications that fade out | form submits, ratings, copy | `.fadeIn()`, `.fadeOut()`, `.remove()` |
+| 8 | Copy-to-clipboard buttons (icon → ✓, tooltip) | `history.html` → *Speak Like a Local* | `.on('click')`, `.on('copy')`, `.addClass()` |
+| 9 | Lazy image loading with shimmer placeholder | cards, gallery, food images, carousel slides | `scroll()`, `.offset()`, `.attr('src', data-src)` |

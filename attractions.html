@@ -7,6 +7,9 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <link rel="icon" href="images/favicon.ico">
+    <!-- Assignment 6: jQuery from CDN + our script (defer = runs after the HTML is parsed) -->
+    <script src="https://code.jquery.com/jquery-4.0.0.min.js"></script>
+    <script src="js/script.js" defer></script>
 </head>
 <body>
 
@@ -56,13 +59,170 @@
             <p class="lead text-muted mb-0">Astana is world-renowned for its visionary skyline and monuments reflecting Kazakh identity, history, and architectural ambition. Click the stars on any landmark to leave your visitor rating!</p>
         </section>
 
+        <!-- Assignment 6 / Task 1 + Task 2: Live Filter & Autocomplete -->
+        <section id="landmark-finder" class="p-4 p-md-5 mb-5 bg-white rounded-4 shadow-sm border">
+            <h2 class="section-heading">Find a Landmark</h2>
+            <p class="text-muted">Start typing a name, category, or district. The list filters as you type, and suggestions appear below the search bar.</p>
+
+            <div class="search-wrapper mb-2">
+                <span class="search-icon" aria-hidden="true">&#128269;</span>
+                <input type="search" id="landmark-search" class="form-control" placeholder="Search landmarks, e.g. Baiterek, museum, park" autocomplete="off" aria-label="Search landmarks" aria-autocomplete="list" aria-controls="autocomplete-list" aria-expanded="false">
+                <ul id="autocomplete-list" class="autocomplete-list" role="listbox"></ul>
+            </div>
+            <small id="landmark-count" class="search-status d-block mb-3"></small>
+
+            <ul id="landmark-list" class="landmark-list list-unstyled mb-0">
+                <li class="landmark-item" data-category="Monument" data-keywords="байтерек бәйтерек">
+                    <div>
+                        <strong class="landmark-name">Baiterek Tower</strong>
+                        <p class="landmark-desc mb-0">Golden sphere on a 97 m tower with a panoramic deck.</p>
+                    </div>
+                    <div class="landmark-meta">
+                        <span class="badge landmark-badge">Monument</span>
+                        <small class="landmark-district">Nurzhol Boulevard</small>
+                    </div>
+                </li>
+                <li class="landmark-item" data-category="Shopping" data-keywords="хан шатыр">
+                    <div>
+                        <strong class="landmark-name">Khan Shatyr</strong>
+                        <p class="landmark-desc mb-0">Giant transparent tent with shops and an indoor beach.</p>
+                    </div>
+                    <div class="landmark-meta">
+                        <span class="badge landmark-badge">Shopping</span>
+                        <small class="landmark-district">Turan Avenue</small>
+                    </div>
+                </li>
+                <li class="landmark-item" data-category="Religious" data-keywords="хазрет султан әзірет сұлтан мечеть мешіт">
+                    <div>
+                        <strong class="landmark-name">Hazret Sultan Mosque</strong>
+                        <p class="landmark-desc mb-0">White marble mosque, one of the largest in Central Asia.</p>
+                    </div>
+                    <div class="landmark-meta">
+                        <span class="badge landmark-badge">Religious</span>
+                        <small class="landmark-district">Tauelsizdik Avenue</small>
+                    </div>
+                </li>
+                <li class="landmark-item" data-category="Museum" data-keywords="нур-алем нұр-әлем экспо музей мұражай">
+                    <div>
+                        <strong class="landmark-name">Nur-Alem Sphere</strong>
+                        <p class="landmark-desc mb-0">Glass sphere of the Museum of Future Energy.</p>
+                    </div>
+                    <div class="landmark-meta">
+                        <span class="badge landmark-badge">Museum</span>
+                        <small class="landmark-district">EXPO District</small>
+                    </div>
+                </li>
+                <li class="landmark-item" data-category="Architecture" data-keywords="пирамида дворец мира бейбітшілік сарайы">
+                    <div>
+                        <strong class="landmark-name">Palace of Peace and Reconciliation</strong>
+                        <p class="landmark-desc mb-0">Glass-topped pyramid by Norman Foster.</p>
+                    </div>
+                    <div class="landmark-meta">
+                        <span class="badge landmark-badge">Architecture</span>
+                        <small class="landmark-district">Tauelsizdik Avenue</small>
+                    </div>
+                </li>
+                <li class="landmark-item" data-category="Culture" data-keywords="опера театр">
+                    <div>
+                        <strong class="landmark-name">Astana Opera</strong>
+                        <p class="landmark-desc mb-0">Grand neoclassical opera and ballet house.</p>
+                    </div>
+                    <div class="landmark-meta">
+                        <span class="badge landmark-badge">Culture</span>
+                        <small class="landmark-district">Kunayev Street</small>
+                    </div>
+                </li>
+                <li class="landmark-item" data-category="Museum" data-keywords="национальный музей ұлттық мұражай">
+                    <div>
+                        <strong class="landmark-name">National Museum of Kazakhstan</strong>
+                        <p class="landmark-desc mb-0">Largest museum in the country, with the Golden Hall.</p>
+                    </div>
+                    <div class="landmark-meta">
+                        <span class="badge landmark-badge">Museum</span>
+                        <small class="landmark-district">Tauelsizdik Avenue</small>
+                    </div>
+                </li>
+                <li class="landmark-item" data-category="Monument" data-keywords="казах ели қазақ елі">
+                    <div>
+                        <strong class="landmark-name">Kazakh Eli Monument</strong>
+                        <p class="landmark-desc mb-0">White stele topped by the mythical bird Samruk.</p>
+                    </div>
+                    <div class="landmark-meta">
+                        <span class="badge landmark-badge">Monument</span>
+                        <small class="landmark-district">Independence Square</small>
+                    </div>
+                </li>
+                <li class="landmark-item" data-category="Architecture" data-keywords="ак орда ақорда">
+                    <div>
+                        <strong class="landmark-name">Ak Orda Presidential Palace</strong>
+                        <p class="landmark-desc mb-0">Blue-domed presidential residence by the Ishim River.</p>
+                    </div>
+                    <div class="landmark-meta">
+                        <span class="badge landmark-badge">Architecture</span>
+                        <small class="landmark-district">Left Bank</small>
+                    </div>
+                </li>
+                <li class="landmark-item" data-category="Sports" data-keywords="астана арена стадион">
+                    <div>
+                        <strong class="landmark-name">Astana Arena</strong>
+                        <p class="landmark-desc mb-0">Football stadium with a retractable roof.</p>
+                    </div>
+                    <div class="landmark-meta">
+                        <span class="badge landmark-badge">Sports</span>
+                        <small class="landmark-district">Turan Avenue</small>
+                    </div>
+                </li>
+                <li class="landmark-item" data-category="Park" data-keywords="центральный парк орталық саябақ">
+                    <div>
+                        <strong class="landmark-name">Central Park</strong>
+                        <p class="landmark-desc mb-0">Green riverside park with rides and walking paths.</p>
+                    </div>
+                    <div class="landmark-meta">
+                        <span class="badge landmark-badge">Park</span>
+                        <small class="landmark-district">Right Bank</small>
+                    </div>
+                </li>
+                <li class="landmark-item" data-category="Park" data-keywords="парк влюбленных ғашықтар саябағы">
+                    <div>
+                        <strong class="landmark-name">Lovers' Park</strong>
+                        <p class="landmark-desc mb-0">Romantic park with fountains near the business district.</p>
+                    </div>
+                    <div class="landmark-meta">
+                        <span class="badge landmark-badge">Park</span>
+                        <small class="landmark-district">Left Bank</small>
+                    </div>
+                </li>
+                <li class="landmark-item" data-category="Monument" data-keywords="мәңгілік ел арка">
+                    <div>
+                        <strong class="landmark-name">Mangilik El Triumphal Arch</strong>
+                        <p class="landmark-desc mb-0">Grand white arch marking the city's southern gateway.</p>
+                    </div>
+                    <div class="landmark-meta">
+                        <span class="badge landmark-badge">Monument</span>
+                        <small class="landmark-district">Mangilik El Avenue</small>
+                    </div>
+                </li>
+                <li class="landmark-item" data-category="Park" data-keywords="есиль есіл набережная">
+                    <div>
+                        <strong class="landmark-name">Ishim River Embankment</strong>
+                        <p class="landmark-desc mb-0">Promenade with bridges that light up at night.</p>
+                    </div>
+                    <div class="landmark-meta">
+                        <span class="badge landmark-badge">Park</span>
+                        <small class="landmark-district">City Center</small>
+                    </div>
+                </li>
+            </ul>
+            <p id="landmark-empty" class="landmark-empty text-center mb-0">No landmarks match your search. Try "park" or "museum".</p>
+        </section>
+
         <!-- Historic Icons with Interactive 5-Star Rating (querySelectorAll) -->
         <section class="mb-5">
             <h2 class="section-heading">Historic & Spiritual Icons</h2>
             <div class="row g-4">
                 <div class="col-12 col-md-6 col-lg-4">
                     <article class="card h-100">
-                        <img src="images/baiterek.jpg" class="card-img-top" alt="Baiterek Tower">
+                        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/baiterek.jpg" class="card-img-top lazy" alt="Baiterek Tower">
                         <div class="card-body d-flex flex-column">
                             <div class="d-flex justify-content-between align-items-center mb-2">
                                 <h3 class="h5 card-title mb-0">Baiterek Tower</h3>
@@ -90,7 +250,7 @@
 
                 <div class="col-12 col-md-6 col-lg-4">
                     <article class="card h-100">
-                        <img src="images/khan-shatyr.jpg" class="card-img-top" alt="Khan Shatyr">
+                        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/khan-shatyr.jpg" class="card-img-top lazy" alt="Khan Shatyr">
                         <div class="card-body d-flex flex-column">
                             <div class="d-flex justify-content-between align-items-center mb-2">
                                 <h3 class="h5 card-title mb-0">Khan Shatyr</h3>
@@ -118,7 +278,7 @@
 
                 <div class="col-12 col-md-6 col-lg-4">
                     <article class="card h-100">
-                        <img src="images/hazret-sultan.jpg" class="card-img-top" alt="Hazret Sultan Mosque">
+                        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/hazret-sultan.jpg" class="card-img-top lazy" alt="Hazret Sultan Mosque">
                         <div class="card-body d-flex flex-column">
                             <div class="d-flex justify-content-between align-items-center mb-2">
                                 <h3 class="h5 card-title mb-0">Hazret Sultan Mosque</h3>
@@ -152,28 +312,28 @@
             <p class="text-muted">Click any thumbnail below to dynamically update the main display photograph:</p>
 
             <div class="mb-3">
-                <img id="gallery-featured-img" src="images/baiterek.jpg" alt="Baiterek Tower" class="gallery-main-img shadow-sm">
+                <img id="gallery-featured-img" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/baiterek.jpg" alt="Baiterek Tower" class="gallery-main-img shadow-sm lazy">
                 <p id="gallery-caption" class="fw-semibold mt-2 mb-0">Baiterek Tower — Golden Observation Sphere on Nurzhol Boulevard</p>
             </div>
 
             <div class="row g-2">
                 <div class="col-4 col-md-2">
-                    <img src="images/baiterek.jpg" alt="Baiterek Tower — Golden Observation Sphere on Nurzhol Boulevard" class="gallery-thumb active-thumb">
+                    <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/baiterek.jpg" alt="Baiterek Tower — Golden Observation Sphere on Nurzhol Boulevard" class="lazy gallery-thumb active-thumb">
                 </div>
                 <div class="col-4 col-md-2">
-                    <img src="images/khan-shatyr.jpg" alt="Khan Shatyr — Norman Foster's Iconic Transparent Tent" class="gallery-thumb">
+                    <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/khan-shatyr.jpg" alt="Khan Shatyr — Norman Foster's Iconic Transparent Tent" class="lazy gallery-thumb">
                 </div>
                 <div class="col-4 col-md-2">
-                    <img src="images/hazret-sultan.jpg" alt="Hazret Sultan Mosque — White Marble Architectural Masterpiece" class="gallery-thumb">
+                    <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/hazret-sultan.jpg" alt="Hazret Sultan Mosque — White Marble Architectural Masterpiece" class="lazy gallery-thumb">
                 </div>
                 <div class="col-4 col-md-2">
-                    <img src="images/nuralem.jpg" alt="Nur-Alem — Future Energy Sphere at EXPO District" class="gallery-thumb">
+                    <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/nuralem.jpg" alt="Nur-Alem — Future Energy Sphere at EXPO District" class="lazy gallery-thumb">
                 </div>
                 <div class="col-4 col-md-2">
-                    <img src="images/skyview.jpg" alt="Astana Skyview — Sunset Over the Ishim Riverfront" class="gallery-thumb">
+                    <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/skyview.jpg" alt="Astana Skyview — Sunset Over the Ishim Riverfront" class="lazy gallery-thumb">
                 </div>
                 <div class="col-4 col-md-2">
-                    <img src="images/oasis.jpg" alt="Indoor Oasis — Year-Round Subtropical Botanical Gardens" class="gallery-thumb">
+                    <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/oasis.jpg" alt="Indoor Oasis — Year-Round Subtropical Botanical Gardens" class="lazy gallery-thumb">
                 </div>
             </div>
         </section>
@@ -184,7 +344,7 @@
             <div class="row g-4">
                 <div class="col-12 col-lg-6">
                     <article class="card h-100">
-                        <img src="images/nuralem.jpg" class="card-img-top" alt="Nur-Alem Museum of Future Energy">
+                        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/nuralem.jpg" class="card-img-top lazy" alt="Nur-Alem Museum of Future Energy">
                         <div class="card-body d-flex flex-column">
                             <h3 class="h5 card-title">Nur-Alem: Museum of Future Energy</h3>
                             <p class="card-text text-muted flex-grow-1">
@@ -201,7 +361,7 @@
 
                 <div class="col-12 col-lg-6">
                     <article class="card h-100">
-                        <img src="images/skyview.jpg" class="card-img-top" alt="Panoramic Sky View of Astana">
+                        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/skyview.jpg" class="card-img-top lazy" alt="Panoramic Sky View of Astana">
                         <div class="card-body d-flex flex-column">
                             <h3 class="h5 card-title">City Vistas & Sunset Photography</h3>
                             <p class="card-text text-muted flex-grow-1">
@@ -244,11 +404,10 @@
         <div class="container">
             <p class="mb-1">Academic Group: <strong>SE-2503</strong></p>
             <p class="mb-1">Project Team Members: <strong>Akniyet Zhanarbek</strong>, <strong>Zhanserik Abilgali</strong></p>
-            <p class="mb-0 text-white-50"><small>&copy; Visit Astana - Assignment #5</small></p>
+            <p class="mb-0 text-white-50"><small>&copy; Visit Astana - Assignment #6</small></p>
         </div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="js/script.js"></script>
 </body>
 </html>
