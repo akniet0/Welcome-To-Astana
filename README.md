@@ -25,8 +25,13 @@ Tested across:
 * **Tablet (576px - 991px):** Two-column card layouts, responsive tour tables with horizontal scroll safeguards
 * **Desktop (≥992px):** Three-column card grids, two-column content/sidebar arrangements
 
+## Project Structure
+* `css/style.css` — one set of colour tokens (`:root`) with Night Mode overrides (`body.dark-theme`); Bootstrap's variables are mapped to them, so every text/background pair meets WCAG AA contrast in both themes
+* `js/translations.js` — all English / Russian / Kazakh text (interface strings, page text, placeholders, facts, dishes, tours)
+* `js/script.js` — site logic written with jQuery
+
 ## Assignment 6 — jQuery Features
-jQuery 4.0.0 is loaded from the official CDN in every page's `<head>`; all jQuery code lives in `js/script.js` inside `$(document).ready()` (logs `jQuery is ready!`).
+jQuery 4.0.0 is loaded from the official CDN in every page's `<head>`, followed by `js/translations.js` and `js/script.js` (both `defer`). All logic runs inside `$(document).ready()` (logs `jQuery is ready!`).
 
 | # | Feature | Where | Key jQuery methods |
 |---|---------|-------|--------------------|

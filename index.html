@@ -7,46 +7,48 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <link rel="icon" href="images/favicon.ico">
-    <!-- Assignment 6: jQuery from CDN + our script (defer = runs after the HTML is parsed) -->
+    <!-- jQuery from CDN, then our scripts (defer = run after the HTML is parsed, in this order) -->
     <script src="https://code.jquery.com/jquery-4.0.0.min.js"></script>
+    <script src="js/translations.js" defer></script>
     <script src="js/script.js" defer></script>
 </head>
 <body>
 
     <!-- Navbar -->
     <header class="sticky-top">
-        <nav class="navbar navbar-expand-lg custom-navbar py-2 px-3 px-sm-4" aria-label="Main Navigation">
+        <nav class="navbar navbar-expand-xl custom-navbar py-2 px-3 px-sm-4" aria-label="Main Navigation">
             <div class="container-fluid">
-                <a class="navbar-brand d-flex align-items-center gap-2 text-white" href="index.html">
+                <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
                     <img src="images/astana-logo.svg" alt="Visit Astana Logo" class="logo-badge">
                     <div>
-                        <span class="h5 m-0 d-block text-white" data-i18n="brandTitle">Visit Astana</span>
-                        <small class="text-white-50" data-i18n="brandSub">Heart of the Great Steppe</small>
+                        <span class="brand-title d-block" data-i18n="brandTitle">Visit Astana</span>
+                        <small class="brand-sub" data-i18n="brandSub">Heart of the Great Steppe</small>
                     </div>
                 </a>
-                
-                <button class="navbar-toggler border-white text-white" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon navbar-toggler-inverted"></span>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
                 </button>
-                
+
                 <div class="collapse navbar-collapse justify-content-end" id="mainNavbar">
-                    <span id="live-datetime" class="datetime-badge my-2 my-lg-0 me-lg-2">Loading date...</span>
-                    
-                    <button id="change-bg-btn" class="btn btn-outline-light btn-sm my-1 my-lg-0 me-lg-2" type="button" data-i18n="bgBtn">Change Background</button>
-                    <button id="theme-toggle-btn" class="btn btn-warning btn-sm my-1 my-lg-0 me-lg-2" type="button">🌙 Night Mode</button>
-
-                    <select id="lang-selector" class="form-select form-select-sm lang-select-nav my-1 my-lg-0 me-lg-3" aria-label="Language Selector">
-                        <option value="en">EN</option>
-                        <option value="ru">RU</option>
-                        <option value="kz">KZ</option>
-                    </select>
-
-                    <ul class="navbar-nav gap-lg-1 mt-3 mt-lg-0" id="keyboard-nav-menu">
-                        <li class="nav-item"><a class="nav-link active" href="index.html" data-i18n="navHome">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="history.html" data-i18n="navHistory">History & Culture</a></li>
+                    <ul class="navbar-nav gap-xl-1 mt-3 mt-xl-0" id="keyboard-nav-menu">
+                        <li class="nav-item"><a class="nav-link active" href="index.html" data-i18n="navHome" aria-current="page">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="history.html" data-i18n="navHistory">History &amp; Culture</a></li>
                         <li class="nav-item"><a class="nav-link" href="attractions.html" data-i18n="navAttractions">Attractions</a></li>
                         <li class="nav-item"><a class="nav-link" href="tours.html" data-i18n="navTours">Tours</a></li>
                     </ul>
+
+                    <div class="nav-tools">
+                        <span id="live-datetime" class="datetime-badge">Loading date...</span>
+                        <button id="change-bg-btn" class="tool-btn" type="button" data-i18n-title="bgBtn" title="Change Background" aria-label="Change Background">🎨</button>
+                        <button id="theme-toggle-btn" class="tool-btn" type="button" title="Night Mode" aria-label="Night Mode" aria-pressed="false">🌙</button>
+                        <div class="lang-switch" role="group" aria-label="Language" data-active="en">
+                            <span class="lang-indicator" aria-hidden="true"></span>
+                            <button type="button" class="lang-btn" data-lang="en" aria-pressed="true">EN</button>
+                            <button type="button" class="lang-btn" data-lang="ru" aria-pressed="false">RU</button>
+                            <button type="button" class="lang-btn" data-lang="kz" aria-pressed="false">KZ</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </nav>
@@ -54,9 +56,9 @@
 
     <main class="container my-4 my-lg-5 px-sm-2">
         <!-- Hero -->
-        <section class="p-4 mb-5 bg-white rounded-4 shadow-sm border">
+        <section class="p-4 mb-5 panel">
             <img src="images/welcome_to_Astana.jpg" alt="Welcome to Astana" class="hero-card-img shadow-sm mb-4">
-            <span id="time-of-day-greeting" class="badge bg-success mb-2">Welcome Traveler!</span>
+            <span id="time-of-day-greeting" class="badge badge-brand mb-2">Welcome Traveler!</span>
             <h1 id="personalized-greeting" class="display-6 fw-bold" data-i18n="heroTitle">Welcome to Astana</h1>
             <p class="lead text-muted mb-3" data-i18n="heroDesc">Astana is a unique blend of futuristic architecture, rich nomadic heritage, and warm steppe hospitality.</p>
 
@@ -70,7 +72,7 @@
                     <button id="show-time-btn" class="btn btn-outline-secondary btn-sm ms-1" type="button">Check Local Time</button>
                 </div>
                 <div class="col-12 col-sm-auto">
-                    <span id="clicked-time-output" class="small fw-semibold text-success"></span>
+                    <span id="clicked-time-output" class="small fw-semibold msg-success"></span>
                 </div>
             </div>
 
@@ -82,7 +84,7 @@
         </section>
 
         <!-- Dynamic Random Fact Box (DOM Selection & Content Modification) -->
-        <section class="p-4 mb-5 bg-white rounded-4 shadow-sm border">
+        <section class="p-4 mb-5 panel">
             <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3">
                 <div>
                     <h2 class="h5 mb-1" data-i18n="factHeading">Did You Know? Astana Cultural & Architecture Facts</h2>
@@ -262,7 +264,7 @@
         </section>
 
         <!-- FAQ Accordion -->
-        <section id="faq-section" class="p-4 p-md-5 bg-white rounded-4 shadow-sm border mb-4">
+        <section id="faq-section" class="p-4 p-md-5 panel mb-4">
             <h2 class="section-heading">Frequently Asked Questions</h2>
             <p class="text-muted">Click any question to view details:</p>
 
@@ -322,7 +324,7 @@
                     <label class="form-label small fw-semibold" for="support-msg">Message</label>
                     <textarea id="support-msg" class="form-control" rows="3" required placeholder="Ask a question..."></textarea>
                 </div>
-                <p id="popup-callback-status" class="small fw-semibold text-success mb-2"></p>
+                <p id="popup-callback-status" class="small fw-semibold mb-2"></p>
                 <button type="submit" id="popup-submit-btn" class="btn btn-primary w-100">Send Inquiry</button>
             </form>
         </div>
